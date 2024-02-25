@@ -8,10 +8,6 @@
 
 }
 
-label {
-    text-align: left !important;
-}
-
 .icon-location{
     width:1.2vw;
     text-align: right !important;
@@ -47,7 +43,11 @@ label {
     border-radius: 10px !important;
     background-color: #f9fafc !important;
     align-items: center;
-    
+    width: 16.5vw !important;
+    height: 16.5vw !important;
+
+    align-items: center;
+    justify-content: center;
 }
 
 a {
@@ -76,14 +76,82 @@ a {
     text-align: center
 }
 
+.index-menu {
+    display: flex ;
+    justify-content: space-between;
+}
+
 .table-card-body {
     width: 100%; /* Menentukan lebar kontainer tabel */
     height: 300px; /* Menentukan tinggi kontainer tabel */
     overflow: auto; /* Mengaktifkan scroll bars jika konten melebihi ukuran kontainer */
 }
 
+.index-alert {
+    text-align: left;
+    align-items: left;
+    justify-content: center;
+}
+
+
 
 @media screen and (max-width: 600px){
+
+    .col-logo{
+        margin-bottom:10px;
+        height:6vh
+    }
+
+    .h1-index{
+        font-size: 3vh
+    }
+
+    .card-riwayat{
+        height: 40vh !important;
+    }
+
+    .font-weight-bold{
+        margin: auto !important;
+    }
+
+    h2 {
+        font-size: 2vh !important;
+    }
+
+    h3 {
+        font-size: 3vh !important
+    }
+
+    .logo {
+        width:60%;
+        text-align: center
+    }
+    
+    .index-menu {
+        display: block ;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .card-index {
+        /*box-shadow: 20px 10px 6px rgba(0, 0, 0, 0.1);  Syntax: offset-x | offset-y | blur-radius | spread-radius | color */
+        border-radius: 10px !important;
+        background-color: #f9fafc !important;
+        align-items: center;
+        width: 70vw !important;
+        height: 40vw !important;
+    
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        padding-bottom: 0 !important;
+    }
 
     .container {
         margin-top: 20px;
@@ -115,12 +183,6 @@ a {
     .icon-location{
         width:3vw;
     }
-
-    label {
-
-        font-size: 3vw !important;
-        text-align: left !important;
-    }
     .card-img-top {
         width: 200% !important;
     }
@@ -135,7 +197,7 @@ a {
     }
 
     .col{
-        margin-bottom: 10px !important;
+        margin-bottom: 0px !important;
     }
     .card-form{
         display: block;
@@ -144,5 +206,9 @@ a {
     .card {
         padding-bottom: 20px;
         
+    }
+
+    .information{
+        font-size: 3.5vw !important;
     }
 }

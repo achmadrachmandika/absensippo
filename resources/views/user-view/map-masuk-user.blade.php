@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ABSENSI MAGANG DIVISI PPA</title>
-    <link rel="stylesheet" href="{{asset('css/absensi.css')}}">
+    <link rel="stylesheet" href="{{asset('asset/css/user-view.css')}}">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
@@ -19,13 +19,13 @@
                 <div class="card" style="width: 100%;heigth:100%">
                     <div class="row">
                         <div class="col-3">
-                            <img src="{{ asset('images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
+                            <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
                         </div>
                         <div class="col-9"></div>
                     </div>
                     
                     <div class="card-body text-center">
-                        <h1 class="card-title">Absensi Pulang</h1>
+                        <h1 class="card-title">Absensi Masuk</h1>
                       <div class="row" style="margin-top:2vw">
                         <div class="col"></div>
                         <div class="col">
@@ -37,7 +37,7 @@
                         <h3 class="question">Apa Lokasi Anda Sudah Benar?</h3>
                         {{-- <p>longitude : {{$data['longitude']}}</p>   
                         <p>latitude : {{$data['latitude']}}</p> --}}
-                        <div class="row" style="display: flex">
+                        <div class="row question" style="display: flex">
                             <div class="col-2"></div>
                             <div class="col-1">
                                 <svg class="icon-location" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#2fa5ee" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
@@ -56,7 +56,7 @@
                         </div>
                       </div>
                         <div class="card-form" style="margin:20px">
-                            <form action="{{ url('/kirim-absensi-pulang') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
+                            <form action="{{ url('/kirim-absensi-masuk') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
                                 @csrf
                                 <input type="hidden" name="attendance_type" id="attendanceTypeInput" value="{{$data['attendance']}}">
                                 <input type="hidden" name="latitude" id="latitudeInput" value="{{$data['latitude']}}">
@@ -65,13 +65,31 @@
                                 <input type="hidden" id="current_time" name="current_time">
                                 <div class="row">
                                     <div class="col">
+                                        <?php if($data['attendance'] === "Masuk"): ?>
+                                            <h3 style="display: none;" for="information">Keterangan</h3>
+                                        <?php else: ?>
+                                            <h3 class="information" for="information">Keterangan</h3>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <?php if($data['attendance'] === "Masuk"): ?>
+                                                <textarea name="information" id="information" class="form-control" style="display: none; resize: none"></textarea>
+                                            <?php else: ?>
+                                                <textarea name="information" id="information" class="form-control" style="resize: none" required></textarea>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col">
                                         <input class="btn btn-secondary form-control" type="submit" value="Benar (Lanjutkan)" id="submitButton">
                                     </div>
                                 </div>
                                 </form>
                                 <div class="row">
                                     <div class="col">
-                                        <button onclick="window.location.href='{{ url('/absensi') }}'" class="btn btn-light form-control"><label for="">Tidak (Kembali ke Halaman Sebelumnya)</label></button>
+                                        <button onclick="window.location.href='{{ url('/absensi-masuk') }}'" class="btn btn-light form-control"><label for="">Tidak (Kembali ke Halaman Sebelumnya)</label></button>
                                     </div>
                                 </div>
                                 </div>
@@ -130,8 +148,8 @@ function checkLocation(position) {
     // const userLatitude = {{$data['latitude']}};
     // const userLongitude = {{$data['longitude']}};
 
-    const userLatitude = -7.618021975130887;
-    const userLongitude = 111.52503753344273;
+    const userLatitude = -7.617921;
+    const userLongitude = 111.523258;
     
 
     // koordinat depan masjid -7.617921, 111.523258
@@ -151,8 +169,8 @@ function checkLocation(position) {
     // Periksa apakah jaraknya berada dalam radius yang diizinkan
     if (distance <= allowedRadius) {
     //Periksa apakah jenis kehadiran adalah "masuk", "izin", "sakit", atau "alpha"
-    if ("{{$data['attendance']}}" === "Pulang") {
-        console.log("masuk dan berada di area");
+    if ("{{$data['attendance']}}" === "Masuk" || "{{$data['attendance']}}" === "Izin" || "{{$data['attendance']}}" === "Sakit" || "{{$data['attendance']}}" === "Alpha") {
+        console.log("masuk dan tidak masuk berada di area");
         
         document.getElementById('submitButton').disabled = false;
         alert("Lokasi diizinkan. Anda berada dalam radius yang diizinkan.");
@@ -162,10 +180,14 @@ function checkLocation(position) {
     else {
     console.log("no");
     //Periksa apakah jenis kehadiran adalah "masuk"
-    if ("{{$data['attendance']}}" === "Pulang") {
+    if ("{{$data['attendance']}}" === "Masuk") {
         console.log("masuk tetapi tidak berada di area");
         document.getElementById('submitButton').disabled = true;
         alert("Lokasi tidak diizinkan. Anda berada di luar radius yang diizinkan.");
+    } else {
+        console.log("tidak masuk dan tidak berada di area");
+        document.getElementById('submitButton').disabled = false;
+        alert("Lokasi diizinkan. Anda memilih tidak masuk.");
     }
     }
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ABSENSI MAGANG DIVISI PPA</title>
-    <link rel="stylesheet" href="{{asset('css/absensi.css')}}">
+    <link rel="stylesheet" href="{{asset('asset/css/user-view.css')}}">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -17,20 +17,22 @@
                 <div class="card" style="width: 100%;heigth:100%">
                     <div class="row">
                         <div class="col-3">
-                            <img src="{{ asset('images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
+                            <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
                         </div>
                         <div class="col-9"></div>
                     </div>
+                    
+                    
                     <div class="card-body">
-                      <h1 class="card-title">Absensi Pulang</h1>
-                        <img class="profile-picture" src="{{ asset('images/man.png')}}" alt="profile">
+                      <h1 class="card-title">Absensi Masuk</h1>
+                        <img class="profile-picture" src="{{ asset('asset/images/man.png')}}" alt="profile">
                       <div class="card-info">
                         <h3 class="greeting">Halo Satria, Absen dulu yuk hari ini..</h3>
                         <h3 class="currentDate" id="currentDate"></h3>
                         <div id="time"></div>
                       </div>
                         <div class="card-form">
-                            <form action="{{ url('/cek-map-pulang') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
+                            <form action="{{ url('/cek-map-masuk') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
                                 @csrf
                                 <input type="hidden" name="attendance_type" id="attendanceTypeInput" value="">
                                 <input type="hidden" name="latitude" id="latitudeInput">
@@ -39,7 +41,16 @@
                                     <div class="col-3"></div>
                                     <div class="col-6">
                                         <div class="row"  style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Pulang')" class="btn btn-secondary form-control" type="button" value="Pulang">
+                                            <input onclick="setAttendanceTypeAndSubmit('Masuk')" class="btn btn-secondary form-control" type="button" value="Masuk">
+                                        </div>
+                                    <div class="row"  style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Izin')" class="btn btn-light form-control" type="button" value="Izin">
+                                        </div>
+                                    <div class="row"  style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Sakit')" class="btn btn-secondary form-control" type="button" value="Sakit">
+                                        </div>
+                                    <div class="row"  style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Alpha')" class="btn btn-light form-control" type="button" value="Alpha">
                                         </div>
                                     </div>
                                     <div class="col-3"></div>
@@ -52,6 +63,7 @@
                         </div>
                     </div>
                   </div>
+                  
             </div>
         </div>
     </div>

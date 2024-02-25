@@ -6,21 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\absenMasuk;
 use App\Models\absenPulang;
 
-class dashboardController extends Controller
+class userDashboardController extends Controller
 {
 
     public function index(){
 
-        return view('index');
+        return view('user-view.index-user');
     }
     public function absensiMasuk(){
 
-        return view('absensi-masuk');
+        return view('user-view.absensi-masuk-user');
     }
 
     public function absensiPulang(){
 
-        return view('absensi-pulang');
+        return view('user-view.absensi-pulang-user');
     }
 
 
@@ -36,7 +36,7 @@ class dashboardController extends Controller
         ];
 
     
-        return view('map-masuk',[
+        return view('user-view.map-masuk-user',[
             'data' => $data
         ]);
     }
@@ -53,7 +53,7 @@ class dashboardController extends Controller
         ];
 
     
-        return view('map-pulang',[
+        return view('user-view.map-pulang-user',[
             'data' => $data
         ]);
     }
@@ -70,7 +70,7 @@ class dashboardController extends Controller
             'latitude' => $request->input('latitude'),
             'keterangan' => $request->input('information'),
         ]);
-        return redirect('/index');
+        return redirect('/index')->with('message','Absen masuk telah berhasil ditambahkan!');
     }
 
     public function kirimAbsensiPulang(Request $request) {
@@ -84,7 +84,7 @@ class dashboardController extends Controller
             'longitude' => $request->input('longitude'),
             'latitude' => $request->input('latitude'),
         ]);
-        return redirect('/index');
+        return redirect('/index')->with('message','Absen pulang telah berhasil ditambahkan!');
     }
 
     public function riwayat() {
@@ -93,7 +93,7 @@ class dashboardController extends Controller
 
         $absenPulang = absenPulang::all();
 
-        return  view('riwayat',[
+        return  view('user-view.riwayat-user',[
             'masuks' => $absenMasuk,
             'pulangs' => $absenPulang
         ]);
