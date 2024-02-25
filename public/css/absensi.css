@@ -1,0 +1,148 @@
+.container {
+    margin-top: 100px;
+}
+
+.body{
+    background-color: #f9fafc;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+label {
+    text-align: left !important;
+}
+
+.icon-location{
+    width:1.2vw;
+    text-align: right !important;
+}
+
+.card-title {
+        color: #222629!important;
+    font-size: 1.5vw;
+}
+
+.map{
+    width: 47vw; 
+    height: 40vh;
+}
+.profile-picture{
+    height:30vh ;
+}
+.card-info{
+        color: #222629!important;
+    font-size: 1vw !important;
+    font-family: 'Nunito', sans-serif;  
+}
+
+.card {
+    /*box-shadow: 20px 10px 6px rgba(0, 0, 0, 0.1);  Syntax: offset-x | offset-y | blur-radius | spread-radius | color */
+    border-radius: 10px !important;
+    background-color: #f9fafc !important;
+    
+}
+
+.card-index {
+    /*box-shadow: 20px 10px 6px rgba(0, 0, 0, 0.1);  Syntax: offset-x | offset-y | blur-radius | spread-radius | color */
+    border-radius: 10px !important;
+    background-color: #f9fafc !important;
+    align-items: center;
+    
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.btn {
+    font-size: 1vw !important;
+    font-family: 'Nunito', sans-serif;
+    /*box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.1);  Syntax: offset-x | offset-y | blur-radius | spread-radius | color */
+    border-radius: 100px !important;
+    
+    margin: 5px 0px;
+}
+
+.btn-light{
+    border: solid 1px #333333 !important;
+}
+
+.question {
+    margin-top:10px !important;
+}
+
+.logo {
+    width:70%;
+    text-align: center
+}
+
+.table-card-body {
+    width: 100%; /* Menentukan lebar kontainer tabel */
+    height: 300px; /* Menentukan tinggi kontainer tabel */
+    overflow: auto; /* Mengaktifkan scroll bars jika konten melebihi ukuran kontainer */
+}
+
+
+@media screen and (max-width: 600px){
+
+    .container {
+        margin-top: 20px;
+    }
+    
+    .card-title{
+        
+        font-size: 5vw;
+    }
+
+    .map{
+        width: 70vw; 
+        height: 40vh;
+    }
+    .currentDate, .greeting, #time {
+
+        font-size: 3vw !important;
+    }
+
+    .wajib {
+        color: red !important;
+    }
+
+    .question {
+
+        font-size: 3vw !important;
+        margin-top:10px !important;
+    }
+    .icon-location{
+        width:3vw;
+    }
+
+    label {
+
+        font-size: 3vw !important;
+        text-align: left !important;
+    }
+    .card-img-top {
+        width: 200% !important;
+    }
+
+    .btn {
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 3vw !important;
+        margin-bottom: 10px ;
+        padding: 5px !important;
+
+    }
+
+    .col{
+        margin-bottom: 10px !important;
+    }
+    .card-form{
+        display: block;
+    }
+
+    .card {
+        padding-bottom: 20px;
+        
+    }
+}
