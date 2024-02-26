@@ -21,4 +21,12 @@ class AbsenMasukController extends Controller
         $absenMasuk = AbsenMasuk::where('user_id', $user_id)->first(); // Ubah cara pencarian
         return view('admin.detail', compact('absenMasuk')); // Ubah path view ke direktori yang benar
     }
+    public function cekMapMasuk($id)
+    {   
+        $data = AbsenMasuk::where('id', $id)->first(); //cari dimana id = $id
+
+        return view('/admin/mapAbsenMasuk',[
+            'data' => $data
+        ]);
+    }
 }
