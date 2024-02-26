@@ -9,10 +9,10 @@ class AbsenKeluarController extends Controller
 {
     public function index()
     {
-        $absenPulang = absenPulang::all();
-        return view('/admin/absenkeluar',[
-            'pulangs' => $absenPulang
-        ]);
+        $absenPulang = AbsenPulang::orderBy('created_at', 'desc')->get();
+    return view('/admin/absenkeluar', [
+        'pulangs' => $absenPulang
+    ]);
     }
 
     public function cekMapPulang($id)

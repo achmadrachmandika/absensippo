@@ -1,60 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>INKA | PPO</title>
+@extends('layouts.admin')
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-</head>
+@section('content')
 
-<body class="hold-transition sidebar-mini">
-    <!-- Site wrapper -->
-    <div class="wrapper">
-        <!-- Navbar -->
-        @include('layouts.admin.header')
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        @include('layouts.admin.sidebar')
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="background-image: url('{{ asset('assets/dist/img/logo_INKA2.png') }}'); background-size: contain; background-position: center; background-repeat: no-repeat;">
-    @yield('content')
-    <div class="section" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
-        <h1 class="section-title" style="text-align: center;">Sistem Absensi Magang</h1>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">Data
+                        Peserta Magang</h2>
+                </div>
+                <div class="card-body">
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                    @endif
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="bg-secondary text-white">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>NIM</th>
+                                    <th>Sekolah / Universitas</th>
+                                    <th>Rekapitulasi Kehadiran</th> <!-- Menambahkan kolom Action -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td> <!-- Mengakses nama user -->
+                                    <td>{{ $user->student_id }}</td> <!-- Mengakses NIM user -->
+                                    <td>{{ $user->school }}</td> <!-- Mengakses sekolah user -->
+                                    <td class="text-center">
+                                        <!-- Mengarahkan ke halaman detail dengan menambahkan user_id sebagai parameter -->
+                                        <a class="btn btn-info" href="{{ route('admin.absensi-masuk.show', $user->id) }}">Show</a>
+                                    </td>
+                                    {{-- <td>
+                                        <!-- Mengarahkan ke halaman detail dengan menambahkan user_id sebagai parameter -->
+                                        <a class="btn btn-info"
+                                            href="{{ route('absensi-user.show', $user->user_id) }}">Show</a>
+                                    </td> --}}
+                                </tr>
+                                @endforeach
+                                <!-- Data absensi lainnya bisa ditambahkan di sini -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
-        <!-- /.content-wrapper -->
-
-        {{-- @include('layouts.admin.footer') --}}
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- jQuery -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
-</body>
-
-</html>
+@endsection

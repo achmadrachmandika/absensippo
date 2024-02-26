@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 
+
 Route::group(['middleware' => ['role:user']], function () {
     // Rute untuk user
     Route::get('/index', [userDashboardController::class, "index"])->name('index');
@@ -49,6 +50,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/cekMapMasuk/{id}', [AbsenMasukController::class, 'cekMapMasuk'])->name('admin.cekMapMasuk');
     Route::get('/admin/cekMapPulang/{id}', [AbsenKeluarController::class, 'cekMapPulang'])->name('admin.cekMapPulang');
 });
+
+Route::get('/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('absensi-masuk.show');
+
+Route::get('/admin/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('admin.absensi-masuk.show');
+
+
 
 
 

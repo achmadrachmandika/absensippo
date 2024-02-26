@@ -59,7 +59,7 @@
                         <table id="myTable" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Sekolah / Universitas</th>
                                     <th>Status</th>
@@ -76,7 +76,7 @@
                                     <td>{{$masuk->sekolah}}</td>
                                     <td>{{$masuk->status}}</td>
                                     <td>{{$masuk->tanggal}} {{$masuk->jam}}</td>
-                                    <td>{{$masuk->keterangan}}</td>
+                                    <td>{{$masuk->keterangan}}</td>p
                                     <td><a href="{{url('admin/cekMapMasuk/'.$masuk->id)}}" class="btn btn-secondary">Cek Maps</a></td>
                                 </tr>
                                 @endforeach
