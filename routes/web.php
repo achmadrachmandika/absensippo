@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\userDashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -18,9 +19,23 @@ use App\Http\Controllers\AbsenKeluarController;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/index');
 });
+
+Route::get('/index',[userDashboardController::class,"index"])->name('index');
+Route::get('/absensi-masuk',[userDashboardController::class,"absensiMasuk"])->name('absensi-masuk');
+Route::get('/absensi-pulang',[userDashboardController::class,"absensiPulang"])->name('absensi-pulang');
+Route::get('/riwayat',[userDashboardController::class,"riwayat"])->name('riwayat');
+
+Route::post('/cek-map-masuk',[userDashboardController::class,"cekMapMasuk"])->name('cek-map-masuk');
+Route::post('/cek-map-pulang',[userDashboardController::class,"cekMapPulang"])->name('cek-map-pulang');
+
+Route::post('/kirim-absensi-masuk',[userDashboardController::class,"kirimAbsensiMasuk"])->name('kirim-absensi-masuk');
+Route::post('/kirim-absensi-pulang',[userDashboardController::class,"kirimAbsensiPulang"])->name('kirim-absensi-pulang');
+
+
 
 Auth::routes();
 
