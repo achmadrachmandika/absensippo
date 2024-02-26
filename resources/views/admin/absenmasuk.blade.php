@@ -23,6 +23,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
+                                    <th>Nim</th>
+                                    <th>Sekolah / Universitas</th>
                                     <th>Status</th>
                                     <th>Tanggal</th>
                                     <th>Jam</th>
@@ -31,15 +33,19 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($masuks as $masuk)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Achmad Rachmandika</td>
-                                    <td>Masuk</td>
-                                    <td>23-02-204</td>
-                                    <td>07.00</td>
-                                    <td>-7.617411, 111.523587</td>
-                                    <td>Mengerjakan Web Absensi</td>
+                                    <td>{{$masuk->id}}</td>
+                                    <td>{{$masuk->nama}}</td>
+                                    <td>{{$masuk->nim}}</td>
+                                    <td>{{$masuk->sekolah}}</td>
+                                    <td>{{$masuk->status}}</td>
+                                    <td>{{$masuk->tanggal}}</td>
+                                    <td>{{$masuk->jam}}</td>
+                                    <td>{{$masuk->longitude}}, {{$masuk->latitude}}</td>
+                                    <td>{{$masuk->keterangan}}</td>
                                 </tr>
+                                @endforeach
                                 <!-- Data absensi lainnya bisa ditambahkan di sini -->
                             </tbody>
                         </table>

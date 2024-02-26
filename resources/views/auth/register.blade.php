@@ -40,28 +40,53 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Jenis Kelamin') }}</label>
-                        
-                            <div class="col-md-6">
-                                <input id="gender" type="gender" class="form-control @error('gender') is-invalid @enderror" name="gender"
-                                    value="{{ old('gender') }}" required autocomplete="gender">
-                        
+                            <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6" style="display: flex; justify-content: space-evenly ">
+                                <div class="form-check">
+                                    <input class="form-check-input @error('gender') is-invalid @enderror" type="radio" name="gender" id="gender_male" value="male" {{ old('gender') == 'male' ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="gender_male">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input @error('gender') is-invalid @enderror" type="radio" name="gender" id="gender_female" value="female" {{ old('gender') == 'female' ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="gender_female">
+                                        Female
+                                    </label>
+                                </div>
+                            
                                 @error('gender')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="school/university" class="col-md-4 col-form-label text-md-end">{{ __('School/University') }}</label>
+                            <label for="student_id" class="col-md-4 col-form-label text-md-end">{{ __('Student Id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus>
+
+                                @error('student_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="school" class="col-md-4 col-form-label text-md-end">{{ __('School / University') }}</label>
                         
                             <div class="col-md-6">
-                                <input id="school/university" type="school/university" class="form-control @error('school/university') is-invalid @enderror" name="school/university"
-                                    value="{{ old('school/university') }}" required autocomplete="school/university">
+                                <input id="school" type="school" class="form-control @error('school') is-invalid @enderror" name="school"
+                                    value="{{ old('school') }}" required autocomplete="school">
                         
-                                @error('school/university')
+                                @error('school')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

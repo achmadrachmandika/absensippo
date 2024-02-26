@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('absen_masuk', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->nullable();
-            $table->string('email')->nullable();
+            $table->unsignedBigInteger('user_id'); // Foreign key
+            $table->string('nama');
+            $table->string('email');
+            $table->string('nim');
+            $table->string('sekolah');
             $table->string('status');
             $table->date('tanggal');
             $table->time('jam');
@@ -22,6 +25,9 @@ return new class extends Migration
             $table->string('latitude');
             $table->string('keterangan')->nullable();
             $table->timestamps();
+        
+            // Foreign key constraint
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

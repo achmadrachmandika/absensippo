@@ -5,17 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\absenMasuk;
 use App\Models\absenPulang;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class userDashboardController extends Controller
 {
 
     public function index(){
 
-        return view('user-view.index-user');
+        $user = Auth::user();
+
+        return view('user-view.index-user',[
+            'user' => $user
+        ]);
     }
     public function absensiMasuk(){
 
-        return view('user-view.absensi-masuk-user');
+        $user = Auth::user();
+
+        return view('user-view.absensi-masuk-user',[
+            'user' => $user
+        ]);
     }
 
     public function absensiPulang(){
@@ -58,11 +68,16 @@ class userDashboardController extends Controller
         ]);
     }
 
-    public function kirimAbsensiMasuk(Request $request) {
+    public function kirimAbsensiMasuk(Request $request, ) {
+
+        $user = Auth::user();
 
         absenMasuk::create([
-            'nama' =>null,
-            'email' =>null,
+            'user_id'=> $user->id,
+            'nama' => $user->name,
+            'email' => $user->email,
+            'nim' => $user->student_id,
+            'sekolah' => $user->school,
             'status' => $request->input('attendance_type'),
             'tanggal' => $request->input('current_date'),
             'jam' => $request->input('current_time'),
@@ -74,10 +89,15 @@ class userDashboardController extends Controller
     }
 
     public function kirimAbsensiPulang(Request $request) {
+
+        $user = Auth::user();
         
         absenPulang::create([
-            'nama' =>null,
-            'email' =>null,
+            'user_id'=> $user->id,
+            'nama' => $user->name,
+            'email' => $user->email,
+            'nim' => $user->student_id,
+            'sekolah' => $user->school,
             'status' => $request->input('attendance_type'),
             'tanggal' => $request->input('current_date'),
             'jam' => $request->input('current_time'),

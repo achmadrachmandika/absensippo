@@ -13,14 +13,20 @@ return new class extends Migration
     {
         Schema::create('absen_pulang', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // Foreign key
             $table->string('nama')->nullable();
             $table->string('email')->nullable();
+            $table->string('nim');
+            $table->string('sekolah');
             $table->string('status');
             $table->date('tanggal');
             $table->time('jam');
             $table->string('longitude');
             $table->string('latitude');
             $table->timestamps();
+
+            // Foreign key constraint
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
