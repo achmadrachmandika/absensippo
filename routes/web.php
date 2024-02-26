@@ -21,7 +21,7 @@ use App\Http\Controllers\AbsenKeluarController;
 
 
 Route::get('/', function () {
-    return redirect('/index');
+    return redirect('home');
 });
 
 Route::get('/index',[userDashboardController::class,"index"])->name('index');

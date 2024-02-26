@@ -40,6 +40,36 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Jenis Kelamin') }}</label>
+                        
+                            <div class="col-md-6">
+                                <input id="gender" type="gender" class="form-control @error('gender') is-invalid @enderror" name="gender"
+                                    value="{{ old('gender') }}" required autocomplete="gender">
+                        
+                                @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="school/university" class="col-md-4 col-form-label text-md-end">{{ __('School/University') }}</label>
+                        
+                            <div class="col-md-6">
+                                <input id="school/university" type="school/university" class="form-control @error('school/university') is-invalid @enderror" name="school/university"
+                                    value="{{ old('school/university') }}" required autocomplete="school/university">
+                        
+                                @error('school/university')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
