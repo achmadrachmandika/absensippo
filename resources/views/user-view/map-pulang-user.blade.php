@@ -127,11 +127,11 @@ function getLocation() {
 }
 
 function checkLocation(position) {
-    // const userLatitude = {{$data['latitude']}};
-    // const userLongitude = {{$data['longitude']}};
+    const userLatitude = {{$data['latitude']}};
+    const userLongitude = {{$data['longitude']}};
 
-    const userLatitude = -7.618021975130887;
-    const userLongitude = 111.52503753344273;
+    // const userLatitude = -7.618021975130887;
+    // const userLongitude = 111.52503753344273;
     
 
     // koordinat depan masjid -7.617921, 111.523258

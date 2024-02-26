@@ -26,15 +26,11 @@
         @include('layouts.admin.sidebar')
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper"
-    style="background-image: url('{{ asset('assets/dist/img/logo_INKA2.png') }}'); background-size: contain; background-position: center; background-repeat: no-repeat;"
+        <div class="content-wrapper" style="background-image: url('{{ asset('assets/dist/img/logo_INKA2.png') }}'); background-size: contain; background-position: center; background-repeat: no-repeat;">
     @yield('content')
     <div class="section" style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
         <h1 class="section-title" style="text-align: center;">Sistem Absensi Magang</h1>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
-            cursus
-            ante dapibus diam. Sed nisi.</p>
     </div>
 </div>
 

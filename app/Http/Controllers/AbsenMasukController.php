@@ -15,4 +15,13 @@ class AbsenMasukController extends Controller
         ]);
     }
 
+    public function cekMapMasuk($id)
+    {   
+        $data = AbsenMasuk::where('id', $id)->first(); //cari dimana id = $id
+
+        return view('/admin/mapAbsenMasuk',[
+            'data' => $data
+        ]);
+    }
+
 }
