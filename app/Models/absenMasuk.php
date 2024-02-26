@@ -13,7 +13,11 @@ class absenMasuk extends Model
 
     protected $fillable = [
 
+        'user_id',
+        'nim',
         'nama',
+        'email',
+        'sekolah',
         'status',
         'tanggal',
         'jam',

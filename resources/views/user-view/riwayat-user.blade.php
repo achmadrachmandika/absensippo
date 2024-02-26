@@ -45,7 +45,7 @@
                             <tbody>
                                 @foreach($masuks as $masuk)
                                 <tr>
-                                    <td>{{$masuk->nama}}Satria</td>
+                                    <td>{{$masuk->nama}}</td>
                                     <td>{{$masuk->status}}</td>
                                     <td>{{$masuk->longitude}}, {{$masuk->latitude}}</td>
                                     <td>{{$masuk->tanggal}}</td>
@@ -78,18 +78,16 @@
                                             <th>Koordinat</th>
                                             <th>Tanggal</th>
                                             <th>Jam</th>
-                                            <th>Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($pulangs as $pulang)
                                         <tr>
-                                            <td>{{$pulang->nama}}Satria</td>
+                                            <td>{{$pulang->nama}}</td>
                                             <td>{{$pulang->status}}</td>
                                             <td>{{$pulang->longitude}}, {{$pulang->latitude}}</td>
                                             <td>{{$pulang->tanggal}}</td>
                                             <td>{{$pulang->jam}}</td>
-                                            <td>{{$pulang->keterangan}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

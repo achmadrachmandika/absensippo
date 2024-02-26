@@ -27,7 +27,7 @@
                       <h1 class="card-title">Absensi Masuk</h1>
                         <img class="profile-picture" src="{{ asset('asset/images/man.png')}}" alt="profile">
                       <div class="card-info">
-                        <h3 class="greeting">Halo Satria, Absen dulu yuk hari ini..</h3>
+                        <h3 class="greeting">Halo {{$user->name}}, Absen dulu yuk hari ini..</h3>
                         <h3 class="currentDate" id="currentDate"></h3>
                         <div id="time"></div>
                       </div>
