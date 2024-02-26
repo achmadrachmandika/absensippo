@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-header text-center">
-                        <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">ABSEN MAGANG KELUAR</h2>
+                        <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">ABSEN PULANG MAGANG</h2>
                     </div>
                 </div>
                 <div class="card-body">
@@ -23,13 +23,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
-                                    <th>Nim</th>
                                     <th>Sekolah / Universitas</th>
                                     <th>Status</th>
-                                    <th>Tanggal</th>
-                                    <th>Jam</th>
-                                    <th>Alamat</th>
+                                    <th>Waktu</th>
                                     <th>Keterangan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,13 +35,11 @@
                                 <tr>
                                     <td>{{$pulang->id}}</td>
                                     <td>{{$pulang->nama}}</td>
-                                    <td>{{$pulang->nim}}</td>
                                     <td>{{$pulang->sekolah}}</td>
                                     <td>{{$pulang->status}}</td>
-                                    <td>{{$pulang->tanggal}}</td>
-                                    <td>{{$pulang->jam}}</td>
-                                    <td>{{$pulang->longitude}}, {{$pulang->latitude}}</td>
+                                    <td>{{$pulang->tanggal}} {{$pulang->jam}}</td>
                                     <td>{{$pulang->keterangan}}</td>
+                                    <td><a href="{{url('admin/cekMapPulang/'.$pulang->id)}}" class="btn btn-secondary">Cek Maps</a></td>
                                 </tr>
                                 @endforeach
                                 <!-- Data absensi lainnya bisa ditambahkan di sini -->

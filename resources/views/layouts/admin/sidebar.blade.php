@@ -1,12 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Sidebar user (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-            <img src="{{ asset('assets/dist/img/logo_INKA2.png') }}" class="img-circle elevation-2" alt="User Image"
-                style="width: 50px; height: 30px;">
-        </div>
-        <div class="info">
-            <a href="#" class="d-block">ADMIN PPO</a>
+    <div class="row user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="col image">
+            <img src="{{ asset('assets/dist/img/logo_INKA2.png') }}"  alt="User Image" style="width:100%;padding:10px">
         </div>
     </div>
 

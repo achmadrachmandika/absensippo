@@ -77,6 +77,8 @@ class RegisterController extends Controller
 
         $user->assignRole('user');
 
+        dd($user);
+
         return $user;
     }
 }

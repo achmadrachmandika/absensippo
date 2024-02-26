@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('student_id'); // Foreign key
             $table->string('name');
             $table->string('gender');
+            $table->string('role');
             $table->string('school');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

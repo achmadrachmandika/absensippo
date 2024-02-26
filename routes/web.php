@@ -21,30 +21,34 @@ use App\Http\Controllers\AbsenKeluarController;
 
 
 Route::get('/', function () {
-    return redirect('home');
+    return redirect('/login');
 });
-
-Route::get('/index',[userDashboardController::class,"index"])->name('index');
-Route::get('/absensi-masuk',[userDashboardController::class,"absensiMasuk"])->name('absensi-masuk');
-Route::get('/absensi-pulang',[userDashboardController::class,"absensiPulang"])->name('absensi-pulang');
-Route::get('/riwayat',[userDashboardController::class,"riwayat"])->name('riwayat');
-
-Route::post('/cek-map-masuk',[userDashboardController::class,"cekMapMasuk"])->name('cek-map-masuk');
-Route::post('/cek-map-pulang',[userDashboardController::class,"cekMapPulang"])->name('cek-map-pulang');
-
-Route::post('/kirim-absensi-masuk',[userDashboardController::class,"kirimAbsensiMasuk"])->name('kirim-absensi-masuk');
-Route::post('/kirim-absensi-pulang',[userDashboardController::class,"kirimAbsensiPulang"])->name('kirim-absensi-pulang');
-
-
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware('role:admin')->get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-// Route::get('/admin/data_magang', [DataMagangController::class, 'index'])->name('admin.data_magang.index');
+Route::group(['middleware' => ['role:user']], function () {
+    // Rute untuk user
+    Route::get('/index', [userDashboardController::class, "index"])->name('index');
+    Route::get('/absensi-masuk', [userDashboardController::class, "absensiMasuk"])->name('absensi-masuk');
+    Route::get('/absensi-pulang', [userDashboardController::class, "absensiPulang"])->name('absensi-pulang');
+    Route::get('/riwayat', [userDashboardController::class, "riwayat"])->name('riwayat');
 
-Route::get('/admin/absenmasuk', [AbsenMasukController::class, 'index'])->name('admin.absenmasuk');
-Route::get('/admin/absenkeluar', [AbsenKeluarController::class, 'index'])->name('admin.absenkeluar');
+    Route::post('/cek-map-masuk', [userDashboardController::class, "cekMapMasuk"])->name('cek-map-masuk');
+    Route::post('/cek-map-pulang', [userDashboardController::class, "cekMapPulang"])->name('cek-map-pulang');
+
+    Route::post('/kirim-absensi-masuk', [userDashboardController::class, "kirimAbsensiMasuk"])->name('kirim-absensi-masuk');
+    Route::post('/kirim-absensi-pulang', [userDashboardController::class, "kirimAbsensiPulang"])->name('kirim-absensi-pulang');
+});
+
+Route::group(['middleware' => ['role:admin']], function () {
+    // Rute untuk admin
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/absenmasuk', [AbsenMasukController::class, 'index'])->name('admin.absenmasuk');
+    Route::get('/admin/absenkeluar', [AbsenKeluarController::class, 'index'])->name('admin.absenkeluar');
+
+    Route::get('/admin/cekMapMasuk/{id}', [AbsenMasukController::class, 'cekMapMasuk'])->name('admin.cekMapMasuk');
+    Route::get('/admin/cekMapPulang/{id}', [AbsenKeluarController::class, 'cekMapPulang'])->name('admin.cekMapPulang');
+});
 
 
 

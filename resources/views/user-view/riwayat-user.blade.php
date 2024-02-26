@@ -100,7 +100,7 @@
                           <br>
                           <div class="row">
                             <div class="col">
-                                <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label>Kembali</label></button>
+                                <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-secondary form-control"><label>Kembali</label></button>
                             </div>
                         </div>
             </div>

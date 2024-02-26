@@ -14,4 +14,13 @@ class AbsenKeluarController extends Controller
             'pulangs' => $absenPulang
         ]);
     }
+
+    public function cekMapPulang($id)
+    {   
+        $data = absenPulang::where('id', $id)->first(); //cari dimana id = $id
+
+        return view('/admin/mapAbsenPulang',[
+            'data' => $data
+        ]);
+    }
 }
