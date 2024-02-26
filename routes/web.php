@@ -25,6 +25,9 @@ Route::get('/', function () {
 });
 
 Route::get('/index',[userDashboardController::class,"index"])->name('index');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
 Route::get('/absensi-masuk',[userDashboardController::class,"absensiMasuk"])->name('absensi-masuk');
 Route::get('/absensi-pulang',[userDashboardController::class,"absensiPulang"])->name('absensi-pulang');
 Route::get('/riwayat',[userDashboardController::class,"riwayat"])->name('riwayat');
@@ -45,6 +48,12 @@ Route::middleware('role:admin')->get('/admin/dashboard', [DashboardController::c
 
 Route::get('/admin/absenmasuk', [AbsenMasukController::class, 'index'])->name('admin.absenmasuk');
 Route::get('/admin/absenkeluar', [AbsenKeluarController::class, 'index'])->name('admin.absenkeluar');
+
+Route::get('/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('absensi-masuk.show');
+
+Route::get('/admin/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('admin.absensi-masuk.show');
+
+
 
 
 

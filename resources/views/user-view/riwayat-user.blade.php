@@ -109,9 +109,13 @@
 
 <script>
     $(document).ready(function(){
-        $('#tabel-data-masuk').DataTable();
-        $('#tabel-data-pulang').DataTable();
-    });
+            $('#tabel-data-masuk').DataTable({
+                "order": [[ 3, "desc" ]] // Urutkan berdasarkan kolom tanggal descending
+            });
+            $('#tabel-data-pulang').DataTable({
+                "order": [[ 3, "desc" ]] // Urutkan berdasarkan kolom tanggal descending
+            });
+        });
 </script>
 </html>
 

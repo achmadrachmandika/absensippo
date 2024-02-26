@@ -6,11 +6,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-          <div class="card-header text-center">
-            <div class="card-header text-center">
-                <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">ABSEN MAGANG MASUK</h2>
-            </div>
-        </div>
+                <div class="card-header text-center">
+                    <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">ABSEN
+                        MAGANG MASUK</h2>
+                </div>
                 <div class="card-body">
                     @if ($message = Session::get('success'))
                     <div class="alert alert-success">
@@ -21,7 +20,7 @@
                         <table class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Nim</th>
                                     <th>Sekolah / Universitas</th>
@@ -44,6 +43,8 @@
                                     <td>{{$masuk->jam}}</td>
                                     <td>{{$masuk->longitude}}, {{$masuk->latitude}}</td>
                                     <td>{{$masuk->keterangan}}</td>
+                                        {{-- <!-- Mengarahkan ke halaman detail dengan menambahkan nim sebagai parameter -->
+                                       <a class="btn btn-info" href="{{ route('absensi-masuk.show', $masuk->user_id) }}">Show</a> --}}
                                 </tr>
                                 @endforeach
                                 <!-- Data absensi lainnya bisa ditambahkan di sini -->

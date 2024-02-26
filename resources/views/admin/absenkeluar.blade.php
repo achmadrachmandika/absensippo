@@ -21,7 +21,7 @@
                         <table class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Nim</th>
                                     <th>Sekolah / Universitas</th>
