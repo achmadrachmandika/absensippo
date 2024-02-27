@@ -35,8 +35,8 @@
                       </div>
                       <div class="card-info">
                         <h3 class="question">Apa Lokasi Anda Sudah Benar?</h3>
-                        {{-- <p>longitude : {{$data['longitude']}}</p>   
-                        <p>latitude : {{$data['latitude']}}</p> --}}
+                        {{-- <p>longitude : {{$data_pulang['longitude']}}</p>   
+                        <p>latitude : {{$data_pulang['latitude']}}</p> --}}
                         <div class="row question" style="display: flex">                            
                             <div class="col-2"></div>
                             <div class="col-1">
@@ -58,11 +58,15 @@
                         <div class="card-form" style="margin:20px">
                             <form action="{{ url('/kirim-absensi-pulang') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
                                 @csrf
-                                <input type="hidden" name="attendance_type" id="attendanceTypeInput" value="{{$data['attendance']}}">
-                                <input type="hidden" name="latitude" id="latitudeInput" value="{{$data['latitude']}}">
-                                <input type="hidden" name="longitude" id="longitudeInput" value="{{$data['longitude']}}">
+                                <input type="hidden" name="attendance_type" id="attendanceTypeInput" value="{{$data_pulang['attendance']}}">
+                                <input type="hidden" name="latitude" id="latitudeInput" value="{{$data_pulang['latitude']}}">
+                                <input type="hidden" name="longitude" id="longitudeInput" value="{{$data_pulang['longitude']}}">
                                 <input type="hidden" id="current_date" name="current_date">
                                 <input type="hidden" id="current_time" name="current_time">
+                                <input type="hidden" name="resume_title" id="resume_titleInput" value="{{$data_resume['resume_title']}}">
+                                <input type="hidden" name="text_resume" id="text_resumeInput" value="{{$data_resume['text_resume']}}">
+                                <input type="hidden" name="pdf_resume" id="pdf_resumeInput" value="{{$data_resume['pdf_resume']}}">
+                                <input type="hidden" name="ukuran_file" id="ukuran_fileInput" value="{{$data_resume['ukuran_file']}}">
                                 <div class="row">
                                     <div class="col">
                                         <input class="btn btn-secondary form-control" type="submit" value="Benar (Lanjutkan)" id="submitButton">
@@ -93,7 +97,7 @@
     const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v12', // style URL
-        center: [{{$data['longitude']}},{{$data['latitude']}}], // starting position [lng, lat]
+        center: [{{$data_pulang['longitude']}},{{$data_pulang['latitude']}}], // starting position [lng, lat]
         //center: [111.523258, -7.617921], //starting position [lng, lat]     INI KOORDINAT INKA (NANTI DIGANTI KOORDINAT KITA)
         zoom: 15, // starting zoom
 
@@ -104,7 +108,7 @@ const marker = new mapboxgl.Marker({ color: "#FF0000" })
     .addTo(map);
 
     const markerUser = new mapboxgl.Marker()
-    .setLngLat([{{$data['longitude']}}, {{$data['latitude']}}])
+    .setLngLat([{{$data_pulang['longitude']}}, {{$data_pulang['latitude']}}])
     .addTo(map);
 
  
@@ -127,8 +131,8 @@ function getLocation() {
 }
 
 function checkLocation(position) {
-    const userLatitude = {{$data['latitude']}};
-    const userLongitude = {{$data['longitude']}};
+    const userLatitude = {{$data_pulang['latitude']}};
+    const userLongitude = {{$data_pulang['longitude']}};
 
     // const userLatitude = -7.618021975130887;
     // const userLongitude = 111.52503753344273;
@@ -151,7 +155,7 @@ function checkLocation(position) {
     // Periksa apakah jaraknya berada dalam radius yang diizinkan
     if (distance <= allowedRadius) {
     //Periksa apakah jenis kehadiran adalah "masuk", "izin", "sakit", atau "alpha"
-    if ("{{$data['attendance']}}" === "Pulang") {
+    if ("{{$data_pulang['attendance']}}" === "Pulang") {
         console.log("masuk dan berada di area");
         
         document.getElementById('submitButton').disabled = false;
@@ -162,7 +166,7 @@ function checkLocation(position) {
     else {
     console.log("no");
     //Periksa apakah jenis kehadiran adalah "masuk"
-    if ("{{$data['attendance']}}" === "Pulang") {
+    if ("{{$data_pulang['attendance']}}" === "Pulang") {
         console.log("masuk tetapi tidak berada di area");
         document.getElementById('submitButton').disabled = true;
         alert("Lokasi tidak diizinkan. Anda berada di luar radius yang diizinkan.");

@@ -2,7 +2,7 @@
     <!-- Sidebar user (optional) -->
     <div class="row user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="col image">
-            <img src="{{ asset('assets/dist/img/logo_INKA2.png') }}"  alt="User Image" style="width:100%;padding:10px">
+            <img src="{{ asset('assets/dist/img/logo_INKA2.png') }}"  alt="User Image" style="width:100%;padding:10px;background-color:rgb(232, 232, 232)">
         </div>
     </div>
 
@@ -19,17 +19,6 @@
                     </p>
                 </a>
             </li>
-
-            <!-- Dashboard -->
-            {{-- <li class="nav-item">
-                <a href="{{ route('admin.data_magang.index') }}"
-                    class="nav-link {{ (request()->routeIs('admin.data_magang.index') ? 'active' : '') }}">
-                    <i class="nav-icon fas fa-user"></i>
-                    <p>
-                        Data Karyawan
-                    </p>
-                </a>
-            </li> --}}
 
             <!-- Profil -->
             <li class="nav-item">
@@ -48,6 +37,16 @@
                     <i class="nav-icon fas fa-user"></i>
                     <p>
                         Absensi Keluar
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('admin.daftar-resume') }}"
+                    class="nav-link {{ (request()->routeIs('admin.absenkeluar') ? 'active' : '') }}">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                        Daftar Resume
                     </p>
                 </a>
             </li>

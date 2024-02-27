@@ -15,19 +15,23 @@
         <div class="row">
             <div class="col" style="height:20vw">
                 <div class="card" style="width: 100%;heigth:100%">
-                    <div class="row">
+                    <div class="row row-top">
                         <div class="col-3">
                             <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
                         </div>
-                        <div class="col-9"></div>
+                        <div class="col-5"></div>
+                        <div class="col-4">
+                            <div class="group-time">
+                                <h3 class="currentDate" id="currentDate"></h3>
+                                <div id="time"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                       <h1 class="card-title">Absensi Pulang</h1>
                         <img class="profile-picture" src="{{ asset('asset/images/man.png')}}" alt="profile">
                       <div class="card-info">
-                        <h3 class="greeting">Halo Satria, Absen dulu yuk hari ini..</h3>
-                        <h3 class="currentDate" id="currentDate"></h3>
-                        <div id="time"></div>
+                        <h3 class="greeting">Halo {{$user->name}}, Silahkan kirim laporan harian sebelum pulang</h3>
                       </div>
                         <div class="card-form">
                             <form action="{{ url('/cek-map-pulang') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
@@ -36,13 +40,30 @@
                                 <input type="hidden" name="latitude" id="latitudeInput">
                                 <input type="hidden" name="longitude" id="longitudeInput">
                                 <div class="row">
-                                    <div class="col-3"></div>
-                                    <div class="col-6">
+                                    <div class="col-2"></div>
+                                    <div class="col-8">
+                                        <br>
+                                        <input type="text" class="form-control" name="resume_title" placeholder="Judul Laporan" id="resume_title" value="{{ old('resume_title') }}">
+                                        @error('resume_title')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                        <br>
+                                        <textarea name="text_resume" id="text_resume" class="form-control" placeholder="Keterangan">{{ old('text_resume') }}</textarea>
+                                        <br>
+                                        <input type="file" name="pdf_resume" id="pdf_resume" class="form-control">
+                                        @error('pdf_resume')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                        <br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2"></div>
+                                    <div class="col-8">
                                         <div class="row"  style="border:1px solid #0000">
                                             <input onclick="setAttendanceTypeAndSubmit('Pulang')" class="btn btn-secondary form-control" type="button" value="Pulang">
                                         </div>
                                     </div>
-                                    <div class="col-3"></div>
                                 </div>
                                 </div>
                             </form>

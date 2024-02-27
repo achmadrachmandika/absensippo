@@ -71,14 +71,13 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'gender' => $data['gender'],
             'student_id' => $data['student_id'],
+            'role'=> 'user',
             'school' => $data['school'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
 
         $user->assignRole('user');
-
-        dd($user);
 
         return $user;
     }

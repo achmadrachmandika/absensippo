@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.applogin')
 
 @section('content')
 <div class="background">
@@ -7,7 +7,8 @@
 </div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-2"></div>
+        <div class="col-8">
             <form class="form" method="POST" action="{{ route('login') }}">
                 @csrf
                 <h3>Selamat Datang di Divisi PPA</h3>
@@ -47,6 +48,8 @@
                 </div>
             </form>
         </div>
+        <div class="col-2"></div>
+        
     </div>
 </div>
 @endsection

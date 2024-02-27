@@ -45,7 +45,7 @@
             <div class="card">
           <div class="card-header text-center">
             <div class="card-header text-center">
-                <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">ABSEN MASUK MAGANG</h2>
+                <h2 class="font-weight-bold" style="opacity: 0.5; font-family: 'Open Sans', sans-serif;">DAFTAR RESUME</h2>
             </div>
         </div>
                 <div class="card-body">
@@ -62,22 +62,22 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Sekolah / Universitas</th>
-                                    <th>Status</th>
-                                    <th>Waktu</th>
+                                    <th>Judul</th>
                                     <th>Keterangan</th>
-                                    <th>Aksi</th>
+                                    <th>Lihat Laporan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($masuks as $masuk)
+                                @foreach($resumes as $resume)
                                 <tr>
-                                    <td>{{$masuk->id}}</td>
-                                    <td>{{$masuk->nama}}</td>
-                                    <td>{{$masuk->sekolah}}</td>
-                                    <td>{{$masuk->status}}</td>
-                                    <td>{{$masuk->tanggal}} {{$masuk->jam}}</td>
-                                    <td>{{$masuk->keterangan}}</td>
-                                    <td><a href="{{url('admin/cekMapMasuk/'.$masuk->id)}}" class="btn btn-secondary">Cek Maps</a></td>
+                                    <td>{{$resume->id}}</td>
+                                    <td>{{$resume->nama}}</td>
+                                    <td>{{$resume->sekolah}}</td>
+                                    <td>{{$resume->judul}}</td>
+                                    <td>{{$resume->keterangan}}</td>
+                                    <td>
+                                        <a href="{{ url('storage/'.$resume->path) }}" class="btn btn-secondary" download>Download File</a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 <!-- Data absensi lainnya bisa ditambahkan di sini -->
@@ -109,4 +109,5 @@
       }
     }
     </script>
+
 @endsection

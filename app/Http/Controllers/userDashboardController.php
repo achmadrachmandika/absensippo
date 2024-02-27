@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\absenMasuk;
 use App\Models\absenPulang;
-use App\Models\User;
+use App\Models\resume;
 use Illuminate\Support\Facades\Auth;
+use App\Upload;
 
 class userDashboardController extends Controller
 {
@@ -30,7 +31,11 @@ class userDashboardController extends Controller
 
     public function absensiPulang(){
 
-        return view('user-view.absensi-pulang-user');
+        $user = Auth::user();
+
+        return view('user-view.absensi-pulang-user',[
+            'user' => $user
+        ]);
     }
 
 
@@ -52,20 +57,57 @@ class userDashboardController extends Controller
     }
 
     public function cekMapPulang(Request $request) {
-        
-        
-        $data = [
+
+        $user = Auth::user();
+
+        $request->validate([
+            'pdf_resume' => 'mimes:pdf|max:1024', // Maksimum 2MB
+            'resume_title' => 'required',
+        ]);
+
+        $data_pulang = [
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
             'attendance' => $request->input('attendance_type'),
             
             // tambahkan data lainnya dari $request yang ingin Anda kirim ke view
         ];
+        
+        if ($request->hasFile('pdf_resume')) {
+            $file = $request->file('pdf_resume');
+            $name = time();
+            $ext = $file->getClientOriginalExtension();
+            $newName = 'Laporan '.$request->input('resume_title') . ' ' . $user->name . ' ' . $name . '.' . $ext;
+
+            $size = $file->getSize();
+
+            $filePath = $file->storeAs('uploads', $newName, 'public'); 
+
+            
+            
+
+            $data_resume = [
+                'resume_title' => $request->input('resume_title'),
+                'text_resume' => $request->input('text_resume'),
+                'pdf_resume' => $filePath,
+                'ukuran_file' => $size,
+            ];
+
+            
+            return view('user-view.map-pulang-user',[
+                'data_pulang' => $data_pulang,
+                'data_resume' => $data_resume
+            ])->with('message','Upload File Diterima');
+        } else {
+            return view('user-view.map-pulang-user',[
+                'data_pulang' => $data_pulang,
+            ])->with('message','Upload File Gagal');
+        }
+        
+        
 
     
-        return view('user-view.map-pulang-user',[
-            'data' => $data
-        ]);
+        
     }
 
     public function kirimAbsensiMasuk(Request $request, ) {
@@ -85,12 +127,23 @@ class userDashboardController extends Controller
             'latitude' => $request->input('latitude'),
             'keterangan' => $request->input('information'),
         ]);
+
         return redirect('/index')->with('message','Absen masuk telah berhasil ditambahkan!');
     }
 
     public function kirimAbsensiPulang(Request $request) {
 
         $user = Auth::user();
+
+        resume::create([
+            'user_id'=> $user->id,
+            'nama' => $user->name,
+            'sekolah' => $user->school,
+            'judul' =>$request->input('resume_title'),
+            'keterangan' =>$request->input('text_resume'),
+            'path' =>$request->input('pdf_resume'),
+            'ukuran_file' =>$request->input('ukuran_file'),
+        ]);
         
         absenPulang::create([
             'user_id'=> $user->id,

@@ -15,11 +15,17 @@
         <div class="row">
             <div class="col" style="height:20vw">
                 <div class="card" style="width: 100%;heigth:100%">
-                    <div class="row">
+                    <div class="row row-top">
                         <div class="col-3">
                             <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
                         </div>
-                        <div class="col-9"></div>
+                        <div class="col-5"></div>
+                        <div class="col-4">
+                            <div class="group-time">
+                                <h3 class="currentDate" id="currentDate"></h3>
+                                <div id="time"></div>
+                            </div>
+                        </div>
                     </div>
                     
                     
@@ -65,8 +71,6 @@
                   </div>
                   
             </div>
-        </div>
-    </div>
     
 
     <script>
