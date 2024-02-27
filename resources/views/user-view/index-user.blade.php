@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="/asset/css/user-view.css">
 <div class="container">
     <div class="text-center">
         @if (session('message'))

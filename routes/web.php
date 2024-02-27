@@ -52,6 +52,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/absenmasuk', [AbsenMasukController::class, 'index'])->name('admin.absenmasuk');
     Route::get('/admin/absenkeluar', [AbsenKeluarController::class, 'index'])->name('admin.absenkeluar');
+    Route::get('/admin/daftarResume', [DashboardController::class, 'daftarResume'])->name('admin.daftar-resume');
 
     Route::get('/admin/cekMapMasuk/{id}', [AbsenMasukController::class, 'cekMapMasuk'])->name('admin.cekMapMasuk');
     Route::get('/admin/cekMapPulang/{id}', [AbsenKeluarController::class, 'cekMapPulang'])->name('admin.cekMapPulang');

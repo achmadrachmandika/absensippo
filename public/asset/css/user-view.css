@@ -1,6 +1,4 @@
-.container {
-    margin-top: 100px;
-}
+
 
 .body{
     background-color: #f9fafc;
@@ -36,6 +34,18 @@
     border-radius: 10px !important;
     background-color: #f9fafc !important;
     
+}
+
+.group-time{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    width: 100%;
+    height: 100%
+}
+
+.row-top{
+    margin-top: 20px !important;
 }
 
 .card-index {
@@ -151,10 +161,6 @@ a {
         justify-content: center;
         margin-bottom: 10px;
         padding-bottom: 0 !important;
-    }
-
-    .container {
-        margin-top: 20px;
     }
     
     .card-title{
