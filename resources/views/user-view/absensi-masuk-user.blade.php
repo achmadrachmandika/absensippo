@@ -54,6 +54,12 @@
                                         </div>
                                     </div>
                                     <div class="col-3"></div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label
+                                                    for="">Tidak (Kembali ke Halaman Sebelumnya)</label></button>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
                             </form>

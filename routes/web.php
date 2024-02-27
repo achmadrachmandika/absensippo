@@ -6,8 +6,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AbsenMasukController;
 use App\Http\Controllers\AbsenKeluarController;
+use App\Http\Controllers\CetakController;
 // use App\Http\Controllers\DataMagangController;
 
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +29,7 @@ Auth::routes();
 
 
 Route::group(['middleware' => ['role:user']], function () {
+
     // Rute untuk user
     Route::get('/index', [userDashboardController::class, "index"])->name('index');
     Route::get('/absensi-masuk', [userDashboardController::class, "absensiMasuk"])->name('absensi-masuk');
@@ -41,6 +44,9 @@ Route::group(['middleware' => ['role:user']], function () {
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
+
+        Route::resource('admin/users', UserController::class); // Menambahkan route resource untuk UserController
+    Route::delete('/admin/users/{id}', 'UserController@destroy')->name('admin.users.destroy');
     // Rute untuk admin
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -49,6 +55,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/cekMapMasuk/{id}', [AbsenMasukController::class, 'cekMapMasuk'])->name('admin.cekMapMasuk');
     Route::get('/admin/cekMapPulang/{id}', [AbsenKeluarController::class, 'cekMapPulang'])->name('admin.cekMapPulang');
+     Route::get('/admin/cetak/{id}', [CetakController::class, 'cetak'])->name('admin.cetak');
+     Route::post('admin/absenmasuk/import', [AbsenMasukController::class, 'import'])->name('admin.absenmasuk.import');
 });
 
 Route::get('/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('absensi-masuk.show');

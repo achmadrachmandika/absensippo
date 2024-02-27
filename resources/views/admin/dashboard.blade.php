@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 
 @section('content')
@@ -26,6 +25,7 @@
                                     <th>NIM</th>
                                     <th>Sekolah / Universitas</th>
                                     <th>Rekapitulasi Kehadiran</th> <!-- Menambahkan kolom Action -->
+                                    <th>Action</th> <!-- Menambahkan kolom Action -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,13 +37,18 @@
                                     <td>{{ $user->school }}</td> <!-- Mengakses sekolah user -->
                                     <td class="text-center">
                                         <!-- Mengarahkan ke halaman detail dengan menambahkan user_id sebagai parameter -->
-                                        <a class="btn btn-info" href="{{ route('admin.absensi-masuk.show', $user->id) }}">Show</a>
-                                    </td>
-                                    {{-- <td>
-                                        <!-- Mengarahkan ke halaman detail dengan menambahkan user_id sebagai parameter -->
                                         <a class="btn btn-info"
-                                            href="{{ route('absensi-user.show', $user->user_id) }}">Show</a>
-                                    </td> --}}
+                                            href="{{ route('admin.absensi-masuk.show', $user->id) }}">Rekapitulasi</a>
+                                    </td>
+                                    <td>
+                                        <!-- Form untuk metode DELETE -->
+                                       <form id="deleteForm{{ $user->id }}" action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <!-- Menambahkan event onClick untuk menampilkan konfirmasi -->
+                                        <button type="submit" class="btn btn-danger" {{ $user->role === 'admin' ? 'disabled' : '' }}>Delete</button>
+                                    </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 <!-- Data absensi lainnya bisa ditambahkan di sini -->
@@ -55,4 +60,16 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection
+
+{{-- @push('scripts')
+<script>
+    // Fungsi untuk menampilkan pop-up konfirmasi
+    function confirmDelete() {
+        return confirm("Apakah Anda yakin ingin menghapus akun ini?");
+    }
+</script> --}}
+{{-- @endpush --}}
