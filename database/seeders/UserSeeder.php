@@ -49,4 +49,22 @@ class UserSeeder extends Seeder
 
         $user->assignRole('user');
     }
+
+      public static function getDataIds()
+{
+    // Array untuk menyimpan ID pengguna yang ditambahkan
+    $userIds = [];
+
+    // Ambil semua data pengguna yang telah ditambahkan
+    $users = User::all();
+
+    // Loop melalui setiap pengguna dan tambahkan ID-nya ke dalam array
+    foreach ($users as $user) {
+        $userIds[] = $user->id;
+    }
+
+    // Kembalikan array ID pengguna
+    return $userIds;
+}
+
 }
