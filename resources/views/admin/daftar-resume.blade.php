@@ -59,7 +59,6 @@
                         <table id="myTable" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Sekolah / Universitas</th>
                                     <th>Judul</th>
@@ -70,13 +69,17 @@
                             <tbody>
                                 @foreach($resumes as $resume)
                                 <tr>
-                                    <td>{{$resume->id}}</td>
                                     <td>{{$resume->nama}}</td>
                                     <td>{{$resume->sekolah}}</td>
                                     <td>{{$resume->judul}}</td>
                                     <td>{{$resume->keterangan}}</td>
                                     <td>
-                                        <a href="{{ url('storage/'.$resume->path) }}" class="btn btn-secondary" download>Download File</a>
+                                      @if($resume->path)
+                                          <a href="{{ url('storage/'.$resume->path) }}" class="btn btn-secondary" download>Download File</a>
+                                      @else
+                                          <a href="{{ url('storage/'.$resume->path) }}" class="btn btn-secondary" style="display:none" download>Download File</a>
+                                      @endif
+                                        
                                     </td>
                                 </tr>
                                 @endforeach

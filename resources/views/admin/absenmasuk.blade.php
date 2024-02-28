@@ -54,7 +54,7 @@
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari.." title="Type in a name">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
                     <div class="table-responsive">
 
                       <!-- Tambahkan tombol import di atas tabel -->
@@ -62,15 +62,6 @@
                         <div class="col-md-6">
                           <form action="{{ route('admin.absenmasuk.import') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="input-group">
-                              <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="importFile" name="file" accept=".xlsx, .xls">
-                                <label class="custom-file-label" for="importFile">Pilih file</label>
-                              </div>
-                              <div class="input-group-append">
-                                <button type="submit" class="btn btn-primary">Import</button>
-                              </div>
-                            </div>
                           </form>
                         </div>
                       </div>
@@ -78,7 +69,6 @@
                         <table id="myTable" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Sekolah / Universitas</th>
                                     <th>Status</th>
@@ -90,7 +80,6 @@
                             <tbody>
                                 @foreach($masuks as $masuk)
                                 <tr>
-                                    <td>{{$masuk->id}}</td>
                                     <td>{{$masuk->nama}}</td>
                                     <td>{{$masuk->sekolah}}</td>
                                     <td>{{$masuk->status}}</td>
@@ -116,7 +105,7 @@
       table = document.getElementById("myTable");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1]; // Mengambil elemen kedua (kolom kedua) untuk pencarian berdasarkan nama
+        td = tr[i].getElementsByTagName("td")[0]; // Mengambil elemen kedua (kolom kedua) untuk pencarian berdasarkan nama
         if (td) {
           txtValue = td.textContent || td.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {

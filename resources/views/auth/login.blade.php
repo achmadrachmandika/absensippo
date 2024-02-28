@@ -1,26 +1,30 @@
 @extends('layouts.applogin')
 
 @section('content')
-<div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-</div>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form class="form" method="POST" action="{{ route('login') }}">
-                @csrf
-                <h3>Selamat Datang di Departemen PPA</h3>
 
-                <div class="form-group">
+    <div class="row">
+        <div class="col-1"></div>
+            <div class="col-10">
+                <form class="form" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="row text-center">
+                        <div class="col">
+                            <h3>Selamat Datang di Departemen PPA</h3>
+                            <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-index"
+                                style=" width:50%" alt="logo-inka">
+                        </div>
+                    </div>
+
                     <label for="email">Email Address</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                        value="{{ old('email') }}" required autocomplete="email" autofocus>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+
                 </div>
 
                 <div class="form-group">
@@ -51,46 +55,22 @@
                 </div>
             </form>
         </div>
+
     </div>
 </div>
 @endsection
 
 <style media="screen">
+
+    
     /* CSS Styling */
     body {
-        background-color: #080710;
-        font-family: 'Poppins', sans-serif;
-        color: #ffffff;
-    }
 
-    .background {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-    }
+        background-color: #f9fafc;
 
-    .background .shape {
-        height: 200px;
-        width: 200px;
-        position: absolute;
-        border-radius: 50%;
-    }
+}
 
-    .shape:first-child {
-        background: linear-gradient(#1845ad, #23a2f6);
-        left: -80px;
-        top: -80px;
-    }
-
-    .shape:last-child {
-        background: linear-gradient(to right, #ff512f, #f09819);
-        right: -30px;
-        bottom: -80px;
-    }
-
+    
     .container {
         padding-top: 20px;
     }
@@ -98,10 +78,11 @@
     .form {
         background-color: rgba(255, 255, 255, 0.13);
         border-radius: 10px;
-        backdrop-filter: blur(10px);
         border: 2px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         padding: 50px 35px;
+        margin: auto;
+        width: 100%
     }
 
     h3 {
@@ -162,6 +143,7 @@
         .form {
             width: 90%;
             padding: 30px;
+            margin: auto
         }
     }
 </style>

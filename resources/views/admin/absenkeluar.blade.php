@@ -54,12 +54,11 @@
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari.." title="Type in a name">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
                     <div class="table-responsive">
                         <table id="myTable" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>Sekolah / Universitas</th>
                                     <th>Status</th>
@@ -71,7 +70,6 @@
                             <tbody>
                                 @foreach($pulangs as $pulang)
                                 <tr>
-                                    <td>{{$pulang->id}}</td>
                                     <td>{{$pulang->nama}}</td>
                                     <td>{{$pulang->sekolah}}</td>
                                     <td>{{$pulang->status}}</td>
@@ -99,7 +97,7 @@
       table = document.getElementById("myTable");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
+        td = tr[i].getElementsByTagName("td")[0];
         if (td) {
           txtValue = td.textContent || td.innerText;
           if (txtValue.toUpperCase().indexOf(filter) > -1) {

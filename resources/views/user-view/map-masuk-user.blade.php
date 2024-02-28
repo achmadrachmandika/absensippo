@@ -12,6 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
+
+@extends('layouts.app')
+
+@section('content')
 <body class="body">
     <div class="container text-center">
         <div class="row">
@@ -103,8 +107,12 @@
             </div>
         </div>
     </div>
+
+
     
 </html>
+
+
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic2F0cmlpYWRhZmZhIiwiYSI6ImNsaDA5Z3lsYzBkOXozbHBxMmtzaTE0djUifQ.GvxtJBL6YN8PIrh5t2pT9g';
@@ -228,3 +236,5 @@ getLocation(); // Meminta lokasi pengguna saat halaman dimuat
 
     
 </script>
+
+@endsection

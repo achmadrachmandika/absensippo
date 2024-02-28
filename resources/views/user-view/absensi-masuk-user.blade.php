@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
+
+@extends('layouts.app')
+
+@section('content')
 <body class="body">
     <div class="container text-center">
         <div class="row">
@@ -31,7 +35,11 @@
                     
                     <div class="card-body">
                       <h1 class="card-title">Absensi Masuk</h1>
+                      @if($user->gender == 'Male')
                         <img class="profile-picture" src="{{ asset('asset/images/man.png')}}" alt="profile">
+                        @elseif($user->gender == 'Female')
+                        <img class="profile-picture" src="{{ asset('asset/images/woman.png')}}" alt="profile">
+                        @endif
                       <div class="card-info">
                         <h3 class="greeting">Halo {{$user->name}}, Absen dulu yuk hari ini..</h3>
                         <h3 class="currentDate" id="currentDate"></h3>
@@ -54,17 +62,12 @@
                                         </div>
                                     <div class="row"  style="border:1px solid #0000">
                                             <input onclick="setAttendanceTypeAndSubmit('Sakit')" class="btn btn-secondary form-control" type="button" value="Sakit">
-                                        </div>
-                                    <div class="row"  style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Alpha')" class="btn btn-light form-control" type="button" value="Alpha">
-                                        </div>
                                     </div>
-                                    <div class="col-3"></div>
-                                    <div class="row">
-                                        <div class="col">
+                                        <div class="row"  style="border:1px solid #0000">
                                             <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label
-                                                    for="">Tidak (Kembali ke Halaman Sebelumnya)</label></button>
+                                                for="">Kembali ke Halaman Sebelumnya</label></button>
                                         </div>
+                                    
                                     </div>
                                 </div>
                                 </div>
@@ -77,7 +80,7 @@
                   </div>
                   
             </div>
-    
+    @endsection
 
     <script>
         function setAttendanceTypeAndSubmit(type) {

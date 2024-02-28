@@ -88,6 +88,8 @@ class userDashboardController extends Controller
             
             // tambahkan data lainnya dari $request yang ingin Anda kirim ke view
         ];
+
+
         
         if ($request->hasFile('pdf_resume')) {
             $file = $request->file('pdf_resume');
@@ -115,8 +117,16 @@ class userDashboardController extends Controller
                 'data_resume' => $data_resume
             ])->with('message','Upload File Diterima');
         } else {
+
+            $data_resume = [
+                'resume_title' => $request->input('resume_title'),
+                'text_resume' => $request->input('text_resume'),
+                'pdf_resume' => null,
+                'ukuran_file' => null,
+            ];
             return view('user-view.map-pulang-user',[
                 'data_pulang' => $data_pulang,
+                'data_resume' => $data_resume
             ])->with('message','Upload File Gagal');
         }
         

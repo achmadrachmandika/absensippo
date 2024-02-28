@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('nama'); 
             $table->string('sekolah'); 
             $table->string('judul');
-            $table->string('keterangan');
-            $table->string('path');
-            $table->string('ukuran_file');
+            $table->string('keterangan')->nullable();
+            $table->string('path')->nullable();
+            $table->string('ukuran_file')->nullable();
             $table->timestamps();
 
             // Foreign key constraint
