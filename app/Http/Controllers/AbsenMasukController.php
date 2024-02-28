@@ -71,6 +71,30 @@ class AbsenMasukController extends Controller
         return $pdf->download($filename);
     }
 
+    public function cetakPreview($id)
+{
+    // Mendapatkan data user berdasarkan ID
+    $user = \App\Models\User::findOrFail($id);
+
+    // Mendapatkan data absensi pengguna
+    // Saya asumsikan Anda memiliki metode untuk mendapatkan data absensi pengguna di sini
+
+    // Inisialisasi jumlah kehadiran, izin, dan sakit
+    $jumlah_masuk = 0;
+    $jumlah_izin = 0;
+    $jumlah_sakit = 0;
+
+    // Membuat PDF dari tampilan Blade
+    $pdf = PDF::loadView('admin.cetak', compact('user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+
+    // Mengatur nama file PDF yang akan dihasilkan
+    $filename = 'absensi_' . $user->name . '.pdf';
+
+    // Mengirimkan tampilan pratinjau PDF untuk ditampilkan di browser
+    return $pdf->stream($filename);
+}
+
+
     public function cekMapMasuk($id)
     {   
         $data = AbsenMasuk::findOrFail($id); // Mendapatkan data absen masuk berdasarkan ID
@@ -81,3 +105,6 @@ class AbsenMasukController extends Controller
     }
 
 }
+
+
+

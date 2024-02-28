@@ -39,6 +39,7 @@
                     @endif
                     <a href="{{ route('admin.dashboard') }}" class="btn btn-primary">Kembali</a>
                     <a href="{{ route('admin.cetak', $user->id) }}" class="btn btn-success">Cetak PDF</a>
+                    <a href="{{ route('admin.preview', $user->id) }}" class="btn btn-info">Preview</a>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
     <div class="row">
         <div class="col-1"></div>
             <div class="col-10">
@@ -24,6 +25,9 @@
                     </span>
                     @enderror
 
+                </div>
+
+                <div class="form-group">
                     <label for="password">Password</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                         name="password" required autocomplete="current-password">
@@ -32,29 +36,26 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                </div>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember')
-                            ? 'checked' : '' }}>
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                    <br>
+                <div class="form-group form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember')
+                        ? 'checked' : '' }}>
+                    <label class="form-check-label" for="remember">
+                        {{ __('Remember Me') }}
+                    </label>
+                </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-login btn-primary form-control">Login</button>
-                        </div>
-                        <div class="col">
-                            <button type="button" onclick="window.location.href='{{ route('register') }}'" class="btn btn-secondary form-control">Register</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                <div class="button-group">
+                    <button type="submit" class="btn btn-login">Login</button>
+
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="btn btn-register">Register</a>
+                    @endif
+                </div>
+            </form>
         </div>
-        <div class="col-1"></div>
-        
+
     </div>
 </div>
 @endsection

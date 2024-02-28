@@ -66,6 +66,7 @@
                                     <div class="col-8">
                                         <div class="row"  style="border:1px solid #0000">
                                             <input onclick="setAttendanceTypeAndSubmit('Pulang')" class="btn btn-secondary form-control" type="button" value="Pulang">
+
                                             <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label
                                                 for="">Kembali ke halaman sebelumnya</label></button>
                                         </div>

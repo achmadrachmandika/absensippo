@@ -36,4 +36,22 @@ class CetakController extends Controller
         // Mengirimkan file PDF untuk ditampilkan atau diunduh
         return $pdf->download($filename);
     }
+
+     public function preview($id)
+    {
+        // Mendapatkan data user berdasarkan ID
+        $user = User::findOrFail($id);
+
+        // Mendapatkan data absensi masuk berdasarkan user ID
+        $absenMasuk = AbsenMasuk::where('user_id', $id)->get();
+
+        // Menghitung jumlah kehadiran, izin, dan sakit
+        $jumlah_masuk = $absenMasuk->where('status', 'Masuk')->count();
+        $jumlah_izin = $absenMasuk->where('status', 'Izin')->count();
+        $jumlah_sakit = $absenMasuk->where('status', 'Sakit')->count();
+
+        // Mengembalikan view preview dengan data yang diperlukan
+        return view('admin.preview', compact('user', 'absenMasuk', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+    }
+
 }

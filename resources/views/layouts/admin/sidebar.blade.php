@@ -2,7 +2,8 @@
     <!-- Sidebar user (optional) -->
     <div class="row user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="col image">
-            <img src="{{ asset('assets/dist/img/logo_INKA2.png') }}"  alt="User Image" style="width:100%;padding:10px;background-color:rgb(232, 232, 232)">
+            <img src="{{ asset('assets/dist/img/logo_INKA2.png') }}" alt="User Image"
+                style="width:100%;padding:10px;background-color:rgb(232, 232, 232)">
         </div>
     </div>
 
@@ -20,7 +21,7 @@
                 </a>
             </li>
 
-            <!-- Profil -->
+            <!-- Absensi Masuk -->
             <li class="nav-item">
                 <a href="{{ route('admin.absenmasuk') }}"
                     class="nav-link {{ (request()->routeIs('admin.absenmasuk') ? 'active' : '') }}">
@@ -31,6 +32,7 @@
                 </a>
             </li>
 
+            <!-- Absensi Keluar -->
             <li class="nav-item">
                 <a href="{{ route('admin.absenkeluar') }}"
                     class="nav-link {{ (request()->routeIs('admin.absenkeluar') ? 'active' : '') }}">
@@ -41,8 +43,10 @@
                 </a>
             </li>
 
+            <!-- Daftar Resume -->
             <li class="nav-item">
                 <a href="{{ route('admin.daftar-resume') }}"
+
                     class="nav-link {{ (request()->routeIs('admin.absenkeluar') ? 'active' : '') }}">
                     <i class="nav-icon fas fa-list"></i>
                     <p>
@@ -53,8 +57,8 @@
 
             <!-- Logout -->
             <li class="nav-item">
-                <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                <a href="{{ route('logout') }}" class="nav-link"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>
                         Logout
