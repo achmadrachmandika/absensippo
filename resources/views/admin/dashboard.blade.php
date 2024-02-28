@@ -20,7 +20,6 @@
                         <table class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
-                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>NIM</th>
                                     <th>Sekolah / Universitas</th>
@@ -31,7 +30,6 @@
                             <tbody>
                                 @foreach($users as $user)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td> <!-- Mengakses nama user -->
                                     <td>{{ $user->student_id }}</td> <!-- Mengakses NIM user -->
                                     <td>{{ $user->school }}</td> <!-- Mengakses sekolah user -->

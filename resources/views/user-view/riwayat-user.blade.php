@@ -14,11 +14,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 </head>
-
 <body class="body">
     <div class="container text-center">
         <div class="row">
-            <div class="col col-logo" style="margin-bottom:10px; height:6vh">
+            <div class="col col-logo" style="margin:10px; height:6vh">
                 <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-riwayat" style="height:100%" alt="logo-inka" >
             </div>
         </div>
@@ -104,7 +103,8 @@
                             </div>
                         </div>
             </div>
-            
+
+
 </body>
 
 <script>
@@ -117,7 +117,11 @@
             });
         });
 </script>
+
+
 </html>
+
+
 
 
 

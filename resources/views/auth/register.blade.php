@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-2"></div>
-        <div class="col-8">
+        <div class="col-1"></div>
+        <div class="col-10">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
@@ -94,15 +94,21 @@
                                 name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                        <div class="mb-0">
-                            <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
-                            <a href="javascript:history.back()" class="btn btn-secondary">Kembali</a>
+                        <div class="mb-0 row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">{{ __('Register') }}</button>
+                            </div>
+                            <div class="col">
+                                <a href="javascript:history.back()" class="btn btn-secondary form-control">Kembali</a>
+                            </div>
+                            
+                            
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
     </div>
 </div>
 @endsection

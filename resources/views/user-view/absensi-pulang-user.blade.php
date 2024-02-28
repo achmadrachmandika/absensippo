@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
+
+@extends('layouts.app')
+
+@section('content')
 <body class="body">
     <div class="container text-center">
         <div class="row">
@@ -62,14 +66,8 @@
                                     <div class="col-8">
                                         <div class="row"  style="border:1px solid #0000">
                                             <input onclick="setAttendanceTypeAndSubmit('Pulang')" class="btn btn-secondary form-control" type="button" value="Pulang">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-3"></div>
-                                    <div class="row">
-                                        <div class="col">
                                             <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label
-                                                    for="">Tidak (Kembali ke Halaman Sebelumnya)</label></button>
+                                                for="">Kembali ke halaman sebelumnya</label></button>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +82,7 @@
             </div>
         </div>
     </div>
-    
+@endsection  
 
     <script>
         function setAttendanceTypeAndSubmit(type) {
@@ -138,6 +136,7 @@
     updateTime(); // Initial call to display the time immediately
     setInterval(updateTime, 1000); // Update the time every second
 </script>
+
 </body>
 </html>
 

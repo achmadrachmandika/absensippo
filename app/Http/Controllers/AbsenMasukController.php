@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AbsenMasuk;
-use App\Imports\MasukImport;
-use Maatwebsite\Excel\Facades\Excel;
+
 
 
 
@@ -81,28 +80,4 @@ class AbsenMasukController extends Controller
         ]);
     }
 
-public function import(Request $request)
-{
-    try {
-        // Validasi file yang diunggah
-        $request->validate([
-            'file' => 'required|mimes:xlsx,xls'
-        ]);
-
-        // Mendapatkan file Excel yang diunggah
-        $file = $request->file('file');
-
-        // Baca file Excel dan lakukan impor menggunakan class import MasukImport
-        Excel::import(new MasukImport, $file);
-
-        // Redirect atau kembalikan respon yang sesuai
-        return redirect()->route('admin.absensi-masuk.index')->with('success', 'Data imported successfully.');
-    } catch (ValidationException $e) {
-        return back()->withErrors($e->errors())->withInput();
-    } catch (\Exception $e) {
-        // Handle error lainnya
-        dd($e->getMessage());
-    }
-
-}
 }

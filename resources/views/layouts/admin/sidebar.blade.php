@@ -24,7 +24,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.absenmasuk') }}"
                     class="nav-link {{ (request()->routeIs('admin.absenmasuk') ? 'active' : '') }}">
-                    <i class="nav-icon fas fa-user"></i>
+                    <i class="nav-icon fas fa-sign-in-alt"></i>
                     <p>
                         Absensi Masuk
                     </p>
@@ -34,7 +34,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.absenkeluar') }}"
                     class="nav-link {{ (request()->routeIs('admin.absenkeluar') ? 'active' : '') }}">
-                    <i class="nav-icon fas fa-user"></i>
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
                     <p>
                         Absensi Keluar
                     </p>
@@ -44,7 +44,7 @@
             <li class="nav-item">
                 <a href="{{ route('admin.daftar-resume') }}"
                     class="nav-link {{ (request()->routeIs('admin.absenkeluar') ? 'active' : '') }}">
-                    <i class="nav-icon fas fa-user"></i>
+                    <i class="nav-icon fas fa-list"></i>
                     <p>
                         Daftar Resume
                     </p>
