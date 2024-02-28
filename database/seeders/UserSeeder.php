@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         $admin = User::create([
             'name' => 'Admin',
-            'gender' => 'Female',
+            'gender' => 'female',
             'role' => 'admin',
             'student_id' => '1',
             'school' => 'inka',
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         $user = User::create([
             'name' => 'User',
-            'gender' => 'Male',
+            'gender' => 'male',
             'role' => 'user',
             'student_id' => '2',
             'school' => 'polinema',
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
 
         $user = User::create([
             'name' => 'Satria Daffa',
-            'gender' => 'Male',
+            'gender' => 'male',
             'role' => 'user',
             'student_id' => '210535614853',
             'school' => 'Universitas Negeri Malang',

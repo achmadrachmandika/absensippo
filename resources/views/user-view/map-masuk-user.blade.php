@@ -13,9 +13,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
-@section('content')
+@section('content') --}}
 <body class="body">
     <div class="container text-center">
         <div class="row">
@@ -236,5 +236,5 @@ getLocation(); // Meminta lokasi pengguna saat halaman dimuat
 
     
 </script>
-
-@endsection
+{{-- 
+@endsection --}}

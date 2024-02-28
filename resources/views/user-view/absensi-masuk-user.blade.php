@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ABSENSI MAGANG DIVISI PPA</title>
+    <title>ABSENSI MAGANG DEPARTEMEN PPA</title>
     <link rel="stylesheet" href="{{asset('asset/css/user-view.css')}}">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </head>
 
-@extends('layouts.app')
-
-@section('content')
 <body class="body">
     <div class="container text-center">
         <div class="row">
@@ -21,7 +22,8 @@
                 <div class="card" style="width: 100%;heigth:100%">
                     <div class="row row-top">
                         <div class="col-3">
-                            <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-top" style="padding:10px" alt="logo-inka" >
+                            <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-top"
+                                style="padding:10px" alt="logo-inka">
                         </div>
                         <div class="col-5"></div>
                         <div class="col-4">
@@ -31,22 +33,21 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
+
                     <div class="card-body">
-                      <h1 class="card-title">Absensi Masuk</h1>
-                      @if($user->gender == 'Male')
+                        <h1 class="card-title">Absensi Masuk</h1>
+                        @if($user->gender == 'male')
                         <img class="profile-picture" src="{{ asset('asset/images/man.png')}}" alt="profile">
-                        @elseif($user->gender == 'Female')
+                        @elseif($user->gender == 'female')
                         <img class="profile-picture" src="{{ asset('asset/images/woman.png')}}" alt="profile">
                         @endif
-                      <div class="card-info">
-                        <h3 class="greeting">Halo {{$user->name}}, Absen dulu yuk hari ini..</h3>
-                        <h3 class="currentDate" id="currentDate"></h3>
-                        <div id="time"></div>
-                      </div>
+                            <h3 class="greeting">Halo {{$user->name}}, Absen dulu yuk hari ini..</h3>
+                            <h3 class="currentDate" id="currentDate"></h3>
+                            <div id="time"></div>
+                        </div>
                         <div class="card-form">
-                            <form action="{{ url('/cek-map-masuk') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
+                            <form action="{{ url('/cek-map-masuk') }}" method="post" enctype="multipart/form-data"
+                                id="attendanceForm">
                                 @csrf
                                 <input type="hidden" name="attendance_type" id="attendanceTypeInput" value="">
                                 <input type="hidden" name="latitude" id="latitudeInput">
@@ -54,33 +55,43 @@
                                 <div class="row">
                                     <div class="col-3"></div>
                                     <div class="col-6">
-                                        <div class="row"  style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Masuk')" class="btn btn-secondary form-control" type="button" value="Masuk">
+                                        <div class="row" style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Masuk')"
+                                                class="btn btn-secondary form-control" type="button" value="Masuk">
                                         </div>
-                                    <div class="row"  style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Izin')" class="btn btn-light form-control" type="button" value="Izin">
+                                        <div class="row" style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Izin')"
+                                                class="btn btn-light form-control" type="button" value="Izin">
                                         </div>
-                                    <div class="row"  style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Sakit')" class="btn btn-secondary form-control" type="button" value="Sakit">
+                                        <div class="row" style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Sakit')"
+                                                class="btn btn-secondary form-control" type="button" value="Sakit">
+                                        </div>
+                                        <div class="row" style="border:1px solid #0000">
+                                            <input onclick="setAttendanceTypeAndSubmit('Alpha')"
+                                                class="btn btn-light form-control" type="button" value="Alpha">
+                                        </div>
                                     </div>
-                                        <div class="row"  style="border:1px solid #0000">
-                                            <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label
-                                                for="">Kembali ke Halaman Sebelumnya</label></button>
+                                    <div class="col-3"></div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button onclick="window.location.href='{{ url('/index') }}'"
+                                                class="btn btn-light form-control"><label for="">Tidak (Kembali ke
+                                                    Halaman Sebelumnya)</label></button>
                                         </div>
-                                    
                                     </div>
                                 </div>
-                                </div>
-                            </form>
-                            
-                            </div>
-                        </form>
                         </div>
+                        </form>
+
                     </div>
-                  </div>
-                  
+                    </form>
+                </div>
             </div>
-    @endsection
+        </div>
+
+    </div>
+
 
     <script>
         function setAttendanceTypeAndSubmit(type) {
@@ -99,10 +110,10 @@
                 alert("Geolocation is not supported by this browser.");
             }
         }
-        </script>
+    </script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
         var dateElement = document.getElementById("currentDate");
 
         var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
@@ -116,11 +127,10 @@
 
         dateElement.innerHTML = "<h3 class='currentDate'>" + dayOfWeek + ", " + dayOfMonth + " " + month + " " + year + "</h3>";
     });
-</script>
+    </script>
 
-
-<script>
-    function updateTime() {
+    <script>
+        function updateTime() {
         var now = new Date();
         var hours = now.getHours();
         var minutes = now.getMinutes();
@@ -134,7 +144,7 @@
     }
     updateTime(); // Initial call to display the time immediately
     setInterval(updateTime, 1000); // Update the time every second
-</script>
+    </script>
 </body>
-</html>
 
+</html>

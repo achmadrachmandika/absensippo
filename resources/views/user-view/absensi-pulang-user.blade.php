@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ABSENSI MAGANG DIVISI PPA</title>
+    <title>ABSENSI MAGANG DEPARTEMEN PPA</title>
     <link rel="stylesheet" href="{{asset('asset/css/user-view.css')}}">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
-@extends('layouts.app')
-
-@section('content')
 <body class="body">
     <div class="container text-center">
         <div class="row">
@@ -33,9 +30,15 @@
                     </div>
                     <div class="card-body">
                       <h1 class="card-title">Absensi Pulang</h1>
+                        @if($user->gender == 'male')
                         <img class="profile-picture" src="{{ asset('asset/images/man.png')}}" alt="profile">
+                        @elseif($user->gender == 'female')
+                        <img class="profile-picture" src="{{ asset('asset/images/woman.png')}}" alt="profile">
+                        @endif
                       <div class="card-info">
                         <h3 class="greeting">Halo {{$user->name}}, Silahkan kirim laporan harian sebelum pulang</h3>
+                        <h3 class="currentDate" id="currentDate"></h3>
+                        <div id="time"></div>
                       </div>
                         <div class="card-form">
                             <form action="{{ url('/cek-map-pulang') }}" method="post" enctype="multipart/form-data" id="attendanceForm">
@@ -83,7 +86,7 @@
             </div>
         </div>
     </div>
-@endsection  
+
 
     <script>
         function setAttendanceTypeAndSubmit(type) {

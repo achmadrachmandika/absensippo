@@ -5,26 +5,26 @@
 
     <div class="row">
         <div class="col-1"></div>
-            <div class="col-10">
-                <form class="form" method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="row text-center">
-                        <div class="col">
-                            <h3>Selamat Datang di Departemen PPA</h3>
-                            <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-index"
-                                style=" width:50%" alt="logo-inka">
-                        </div>
+        <div class="col-10">
+            <form class="form" method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="row text-center">
+                    <div class="col">
+                        <h3>Selamat Datang di Departemen PPA</h3>
+                        <img src="{{ asset('asset/images/logo-inka.png')}}" class="card-img-index" style="width:50%"
+                            alt="logo-inka">
                     </div>
+                </div>
 
+                <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-
                 </div>
 
                 <div class="form-group">
@@ -61,16 +61,11 @@
 @endsection
 
 <style media="screen">
-
-    
     /* CSS Styling */
     body {
-
         background-color: #f9fafc;
+    }
 
-}
-
-    
     .container {
         padding-top: 20px;
     }
@@ -82,7 +77,7 @@
         box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         padding: 50px 35px;
         margin: auto;
-        width: 100%
+        width: 100%;
     }
 
     h3 {
@@ -143,7 +138,7 @@
         .form {
             width: 90%;
             padding: 30px;
-            margin: auto
+            margin: auto;
         }
     }
 </style>
