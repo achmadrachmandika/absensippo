@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <div class="card-body text-center map" style="width:100%; height:30vh" id='map'></div>
+                            <div class="card-body text-center map" style="width:100%; height:30vh;border-radius:10px" id='map'></div>
                         </div>
                       </div>
                     <div class="row question" style="display: flex;margin-top:10px !important">

@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'student_id' => '1',
             'school' => 'inka',
-            'email' => 'admin@role.test',
-            'password' => bcrypt('12345')
+            'email' => 'adminppa@inka.co.id',
+            'password' => bcrypt('admin123')
         ]);
 
         $admin->assignRole('admin');

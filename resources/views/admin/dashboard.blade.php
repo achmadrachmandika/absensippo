@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -16,7 +17,8 @@
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari.." title="Type in a name">
+                    <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
+                    <br>
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead class="bg-secondary text-white">
@@ -48,7 +50,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <!-- Tombol Delete -->
-                                        <button type="submit" class="btn btn-danger" {{ $user->role === 'admin' ? 'disabled' : '' }}>Delete</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                     </td>
                                 </tr>

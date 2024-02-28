@@ -188,9 +188,16 @@ class userDashboardController extends Controller
 
     public function riwayat() {
 
-        $absenMasuk = absenMasuk::all();
+        $user = Auth::user();
 
-        $absenPulang = absenPulang::all();
+        $user_studentID = $user->student_id;
+
+        
+
+        $absenMasuk = absenMasuk::where('nim', $user_studentID)->get();
+
+
+        $absenPulang = absenPulang::where('nim', $user_studentID)->get();
 
         return  view('user-view.riwayat-user',[
             'masuks' => $absenMasuk,
