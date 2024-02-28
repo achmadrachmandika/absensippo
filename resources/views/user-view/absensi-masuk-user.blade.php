@@ -67,15 +67,13 @@
                                             <input onclick="setAttendanceTypeAndSubmit('Sakit')"
                                                 class="btn btn-secondary form-control" type="button" value="Sakit">
                                         </div>
-                                    </div>
-                                    <div class="col-3"></div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <button onclick="window.location.href='{{ url('/index') }}'"
-                                                class="btn btn-light form-control"><label for="">Tidak (Kembali ke
-                                                    Halaman Sebelumnya)</label></button>
+                                        <br>
+                                        <div class="row" style="border:1px solid #0000">
+                                            <button onclick="window.location.href='{{ url('/index') }}'" class="btn btn-light form-control"><label for="">Kembali ke
+                                                    Halaman Sebelumnya</label></button>
                                         </div>
                                     </div>
+                                    <div class="col-3"></div>
                                 </div>
                         </div>
                         </form>

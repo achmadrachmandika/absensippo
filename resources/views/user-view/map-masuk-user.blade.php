@@ -91,6 +91,7 @@
                                     </div>
                                 </div>
                                 </form>
+                                <br>
                                 <div class="row">
                                     <div class="col">
                                         <button onclick="window.location.href='{{ url('/absensi-masuk') }}'" class="btn btn-light form-control"><label for="">Tidak (Kembali ke Halaman Sebelumnya)</label></button>
