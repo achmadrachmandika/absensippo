@@ -22,11 +22,27 @@ class userDashboardController extends Controller
     }
     public function absensiMasuk(){
 
-        $user = Auth::user();
+        $user = Auth::user(); // Mendapatkan pengguna yang sedang diotentikasi
+        $currentDate = date('Y-m-d'); // Mendapatkan tanggal saat ini dalam format 'YYYY-MM-DD'
 
-        return view('user-view.absensi-masuk-user',[
+        // Mengambil data absen masuk berdasarkan user_id dan tanggal
+        $dataMasuk = absenMasuk::where('user_id', $user->id)
+            ->where('tanggal', $currentDate)
+            ->get();
+
+        // Mengembalikan nilai true jika ada record absen masuk untuk pengguna saat ini pada tanggal sekarang
+        $absenMasukExists = $dataMasuk->isNotEmpty();
+
+        if($absenMasukExists){
+            return redirect('/index')->with('message', 'Anda Sudah Absen Hari Ini');
+        }else{
+            return view('user-view.absensi-masuk-user',[
             'user' => $user
         ]);
+        }
+        
+
+        
     }
 
     public function absensiPulang(){

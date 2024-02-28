@@ -1,50 +1,54 @@
+.container {
+    margin-top: 35px;
+}
 
-
-.body{
+.body {
     background-color: #f9fafc;
     font-family: 'Nunito', sans-serif;
 
 }
 
-.icon-location{
-    width:1.2vw;
+.icon-location {
+    width: 1.2vw;
     text-align: right !important;
 }
 
 .card-title {
-        color: #222629!important;
+    color: #222629 !important;
     font-size: 1.5vw;
 }
 
-.map{
-    width: 47vw; 
+.map {
+    width: 47vw;
     height: 40vh;
 }
-.profile-picture{
-    height:30vh ;
+
+.profile-picture {
+    height: 30vh;
 }
-.card-info{
-        color: #222629!important;
+
+.card-info {
+    color: #222629 !important;
     font-size: 1vw !important;
-    font-family: 'Nunito', sans-serif;  
+    font-family: 'Nunito', sans-serif;
 }
 
 .card {
     /*box-shadow: 20px 10px 6px rgba(0, 0, 0, 0.1);  Syntax: offset-x | offset-y | blur-radius | spread-radius | color */
     border-radius: 10px !important;
     background-color: #f9fafc !important;
-    
+
 }
 
-.group-time{
+.group-time {
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     width: 100%;
     height: 100%
 }
 
-.row-top{
+.row-top {
     margin-top: 20px !important;
 }
 
@@ -69,32 +73,35 @@ a {
     font-family: 'Nunito', sans-serif;
     /*box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.1);  Syntax: offset-x | offset-y | blur-radius | spread-radius | color */
     border-radius: 100px !important;
-    
+
     margin: 5px 0px;
 }
 
-.btn-light{
+.btn-light {
     border: solid 1px #333333 !important;
 }
 
 .question {
-    margin-top:10px !important;
+    margin-top: 10px !important;
 }
 
 .logo {
-    width:70%;
+    width: 70%;
     text-align: center
 }
 
 .index-menu {
-    display: flex ;
+    display: flex;
     justify-content: space-between;
 }
 
 .table-card-body {
-    width: 100%; /* Menentukan lebar kontainer tabel */
-    height: 300px; /* Menentukan tinggi kontainer tabel */
-    overflow: auto; /* Mengaktifkan scroll bars jika konten melebihi ukuran kontainer */
+    width: 100%;
+    /* Menentukan lebar kontainer tabel */
+    height: 300px;
+    /* Menentukan tinggi kontainer tabel */
+    overflow: auto;
+    /* Mengaktifkan scroll bars jika konten melebihi ukuran kontainer */
 }
 
 .index-alert {
@@ -105,22 +112,22 @@ a {
 
 
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
 
-    .col-logo{
-        margin-bottom:10px;
-        height:6vh
+    .col-logo {
+        margin-bottom: 10px;
+        height: 6vh
     }
 
-    .h1-index{
+    .h1-index {
         font-size: 3vh
     }
 
-    .card-riwayat{
+    .card-riwayat {
         height: 40vh !important;
     }
 
-    .font-weight-bold{
+    .font-weight-bold {
         margin: auto !important;
     }
 
@@ -133,12 +140,12 @@ a {
     }
 
     .logo {
-        width:60%;
+        width: 60%;
         text-align: center
     }
-    
+
     .index-menu {
-        display: block ;
+        display: block;
         align-items: center;
         justify-content: center;
     }
@@ -156,22 +163,23 @@ a {
         align-items: center;
         width: 70vw !important;
         height: 40vw !important;
-    
+
         align-items: center;
         justify-content: center;
         margin-bottom: 10px;
         padding-bottom: 0 !important;
     }
-    
-    .card-title{
-        
+
+    .card-title {
+
         font-size: 5vw;
     }
 
-    .map{
-        width: 70vw; 
+    .map {
+        width: 70vw;
         height: 40vh;
     }
+
     .currentDate, .greeting, #time {
 
         font-size: 3vw !important;
@@ -184,11 +192,13 @@ a {
     .question {
 
         font-size: 3vw !important;
-        margin-top:10px !important;
+        margin-top: 10px !important;
     }
-    .icon-location{
-        width:3vw;
+
+    .icon-location {
+        width: 3vw;
     }
+
     .card-img-top {
         width: 200% !important;
     }
@@ -197,24 +207,25 @@ a {
         width: 100% !important;
         height: 100% !important;
         font-size: 3vw !important;
-        margin-bottom: 10px ;
+        margin-bottom: 10px;
         padding: 5px !important;
 
     }
 
-    .col{
+    .col {
         margin-bottom: 0px !important;
     }
-    .card-form{
+
+    .card-form {
         display: block;
     }
 
     .card {
         padding-bottom: 20px;
-        
+
     }
 
-    .information{
+    .information {
         font-size: 3.5vw !important;
     }
 }

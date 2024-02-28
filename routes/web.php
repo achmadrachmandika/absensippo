@@ -22,6 +22,7 @@ use App\Http\Controllers\UserController;
 */
 
 
+
 Route::get('/', function () {
     return redirect('/login');
 });
@@ -41,6 +42,8 @@ Route::group(['middleware' => ['role:user']], function () {
 
     Route::post('/kirim-absensi-masuk', [userDashboardController::class, "kirimAbsensiMasuk"])->name('kirim-absensi-masuk');
     Route::post('/kirim-absensi-pulang', [userDashboardController::class, "kirimAbsensiPulang"])->name('kirim-absensi-pulang');
+    Route::post('/set-attendance-session', [AbsenMasukController::class, 'setAttendanceSession'])->name('set.attendance.session');
+
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
@@ -57,12 +60,14 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/cekMapMasuk/{id}', [AbsenMasukController::class, 'cekMapMasuk'])->name('admin.cekMapMasuk');
     Route::get('/admin/cekMapPulang/{id}', [AbsenKeluarController::class, 'cekMapPulang'])->name('admin.cekMapPulang');
      Route::get('/admin/cetak/{id}', [CetakController::class, 'cetak'])->name('admin.cetak');
+     Route::get('/admin/preview/{id}', [CetakController::class, 'preview'])->name('admin.preview');
      Route::post('admin/absenmasuk/import', [AbsenMasukController::class, 'import'])->name('admin.absenmasuk.import');
 });
 
 Route::get('/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('absensi-masuk.show');
 
 Route::get('/admin/absensi-masuk/{user_id}', [AbsenMasukController::class, 'show'])->name('admin.absensi-masuk.show');
+
 
 
 
