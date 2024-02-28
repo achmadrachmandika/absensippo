@@ -11,7 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
          // Ambil semua data pengguna dari model User, diurutkan berdasarkan pembuatan terbaru
-    $users = User::orderBy('created_at', 'desc')->get();
+         $users = User::whereNotIn('id', [1])
+         ->orderBy('created_at', 'desc')
+         ->get();
 
 
         // Kirim data pengguna ke view 'admin.dashboard'
