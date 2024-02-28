@@ -67,10 +67,6 @@
                                             <input onclick="setAttendanceTypeAndSubmit('Sakit')"
                                                 class="btn btn-secondary form-control" type="button" value="Sakit">
                                         </div>
-                                        <div class="row" style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Alpha')"
-                                                class="btn btn-light form-control" type="button" value="Alpha">
-                                        </div>
                                     </div>
                                     <div class="col-3"></div>
                                     <div class="row">
