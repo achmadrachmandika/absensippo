@@ -33,7 +33,7 @@
                       <div class="row" style="margin-top:2vw">
                         <div class="col"></div>
                         <div class="col">
-                            <div class="card-body text-center map" id='map'></div>
+                            <div class="card-body text-center map" id='map' style="border-radius:10px"></div>
                         </div>
                         <div class="col"></div>
                       </div>

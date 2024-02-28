@@ -55,7 +55,7 @@
                     </div>
                     @endif
                     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
-                    <div class="table-responsive">
+                    <div class="table-responsive"style="max-height:700px">
                         <table id="myTable" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>

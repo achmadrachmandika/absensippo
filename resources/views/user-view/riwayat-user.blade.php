@@ -33,22 +33,20 @@
                         <table id="tabel-data-masuk" class="table table-striped table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Nama</th>
+                                    <th>Tanggal</th>
+                                    <th>Jam</th>                                    
                                     <th>Status</th>
                                     <th>Koordinat</th>
-                                    <th>Tanggal</th>
-                                    <th>Jam</th>
                                     <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($masuks as $masuk)
                                 <tr>
-                                    <td>{{$masuk->nama}}</td>
-                                    <td>{{$masuk->status}}</td>
-                                    <td>{{$masuk->longitude}}, {{$masuk->latitude}}</td>
                                     <td>{{$masuk->tanggal}}</td>
                                     <td>{{$masuk->jam}}</td>
+                                    <td>{{$masuk->status}}</td>
+                                    <td>{{$masuk->longitude}}, {{$masuk->latitude}}</td>
                                     <td>{{$masuk->keterangan}}</td>
                                 </tr>
                                 @endforeach
@@ -72,21 +70,19 @@
                                 <table id="tabel-data-pulang" class="table table-striped table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Nama</th>
-                                            <th>Status</th>
-                                            <th>Koordinat</th>
                                             <th>Tanggal</th>
                                             <th>Jam</th>
+                                            <th>Status</th>
+                                            <th>Koordinat</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($pulangs as $pulang)
                                         <tr>
-                                            <td>{{$pulang->nama}}</td>
-                                            <td>{{$pulang->status}}</td>
-                                            <td>{{$pulang->longitude}}, {{$pulang->latitude}}</td>
                                             <td>{{$pulang->tanggal}}</td>
                                             <td>{{$pulang->jam}}</td>
+                                            <td>{{$pulang->status}}</td>
+                                            <td>{{$pulang->longitude}}, {{$pulang->latitude}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -47,10 +47,10 @@
                 </div>
 
                 <div class="button-group">
-                    <button type="submit" class="btn btn-login">Login</button>
+                    <button type="submit" class="btn btn-login btn-primary form-control">Login</button>
 
                     @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="btn btn-register">Register</a>
+                    <a href="{{ route('register') }}" class="btn btn-secondary form-control">Register</a>
                     @endif
                 </div>
             </form>
@@ -74,7 +74,7 @@
         background-color: rgba(255, 255, 255, 0.13);
         border-radius: 10px;
         border: 2px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
         padding: 50px 35px;
         margin: auto;
         width: 100%;

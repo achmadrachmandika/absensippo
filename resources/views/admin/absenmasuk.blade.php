@@ -66,6 +66,7 @@
                         </div>
                       </div>
 
+                      <div style="max-height:700px">
                         <table id="myTable" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
@@ -91,6 +92,8 @@
                                 <!-- Data absensi lainnya bisa ditambahkan di sini -->
                             </tbody>
                         </table>
+                      </div>
+
                     </div>
                 </div>
             </div>
