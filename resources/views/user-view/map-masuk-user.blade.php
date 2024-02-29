@@ -69,7 +69,7 @@
                                 <input type="hidden" id="current_time" name="current_time">
                                 <div class="row">
                                     <div class="col">
-                                        <?php if($data['attendance'] === "Masuk"): ?>
+                                        <?php if($data['attendance'] === "Sedang Masuk"): ?>
                                             <h3 style="display: none;" for="information">Keterangan</h3>
                                         <?php else: ?>
                                             <h3 class="information" for="information">Keterangan</h3>
@@ -78,7 +78,7 @@
                                 </div>
                                     <div class="row">
                                         <div class="col">
-                                            <?php if($data['attendance'] === "Masuk"): ?>
+                                            <?php if($data['attendance'] === "Sedang Masuk"): ?>
                                                 <textarea name="information" id="information" class="form-control" style="display: none; resize: none"></textarea>
                                             <?php else: ?>
                                                 <textarea name="information" id="information" class="form-control" style="resize: none" required></textarea>
@@ -178,7 +178,7 @@ function checkLocation(position) {
     // Periksa apakah jaraknya berada dalam radius yang diizinkan
     if (distance <= allowedRadius) {
     //Periksa apakah jenis kehadiran adalah "masuk", "izin", "sakit", atau "alpha"
-    if ("{{$data['attendance']}}" === "Masuk" || "{{$data['attendance']}}" === "Izin" || "{{$data['attendance']}}" === "Sakit" || "{{$data['attendance']}}" === "Alpha") {
+    if ("{{$data['attendance']}}" === "Izin" || "{{$data['attendance']}}" === "Sakit" || "{{$data['attendance']}}" === "Sedang Masuk") {
         console.log("masuk dan tidak masuk berada di area");
         
         document.getElementById('submitButton').disabled = false;
@@ -189,7 +189,7 @@ function checkLocation(position) {
     else {
     console.log("no");
     //Periksa apakah jenis kehadiran adalah "masuk"
-    if ("{{$data['attendance']}}" === "Masuk") {
+    if ("{{$data['attendance']}}" === "Sedang Masuk") {
         console.log("masuk tetapi tidak berada di area");
         document.getElementById('submitButton').disabled = true;
         alert("Lokasi tidak diizinkan. Anda berada di luar radius yang diizinkan.");

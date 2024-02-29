@@ -8,6 +8,7 @@ use App\Models\absenPulang;
 use App\Models\resume;
 use Illuminate\Support\Facades\Auth;
 use App\Upload;
+use Carbon\Carbon;
 
 class userDashboardController extends Controller
 {
@@ -47,11 +48,34 @@ class userDashboardController extends Controller
 
     public function absensiPulang(){
 
-        $user = Auth::user();
+        $user = Auth::user(); // Mendapatkan pengguna yang sedang diotentikasi
+        $currentDate = date('Y-m-d'); // Mendapatkan tanggal saat ini dalam format 'YYYY-MM-DD'
 
-        return view('user-view.absensi-pulang-user',[
-            'user' => $user
-        ]);
+        $statusMasuk = absenMasuk::where('user_id', $user->id)->where('tanggal', $currentDate)->first();
+
+
+
+        // Mengambil data absen Pulang berdasarkan user_id dan tanggal
+        $dataPulang = absenPulang::where('user_id', $user->id)
+            ->where('tanggal', $currentDate)
+            ->get();
+
+        // Mengembalikan nilai true jika ada record absen Pulang untuk pengguna saat ini pada tanggal sekarang
+        $absenPulangExists = $dataPulang->isNotEmpty();
+        if ($absenPulangExists) {
+            return redirect('/index')->with('message', 'Anda Sudah Pulang Hari Ini');
+        } else if ($statusMasuk->status == 'Izin' || $statusMasuk->status == 'Sakit') {
+            return redirect('/index')->with('message', 'Anda Tidak Masuk Hari Ini');   
+        } else if ($statusMasuk->status == 'Alpha') {
+            return redirect('/index')->with('message', 'Anda Tidak Absen Masuk Tadi Pagi');   
+        }
+        else if ($statusMasuk->status == 'Sedang Masuk'){
+            return view('user-view.absensi-pulang-user',[
+                'user' => $user
+            ]);   
+        }
+
+        
     }
 
 
@@ -136,23 +160,27 @@ class userDashboardController extends Controller
         
     }
 
-    public function kirimAbsensiMasuk(Request $request, ) {
+    public function kirimAbsensiMasuk(Request $request ) {
+
 
         $user = Auth::user();
 
         absenMasuk::create([
-            'user_id'=> $user->id,
-            'nama' => $user->name,
-            'email' => $user->email,
-            'nim' => $user->student_id,
-            'sekolah' => $user->school,
-            'status' => $request->input('attendance_type'),
-            'tanggal' => $request->input('current_date'),
-            'jam' => $request->input('current_time'),
-            'longitude' => $request->input('longitude'),
-            'latitude' => $request->input('latitude'),
-            'keterangan' => $request->input('information'),
-        ]);
+                    'user_id'=> $user->id,
+                    'nama' => $user->name,
+                    'email' => $user->email,
+                    'nim' => $user->student_id,
+                    'sekolah' => $user->school,
+                    'status' => $request->input('attendance_type'),
+                    'tanggal' => $request->input('current_date'),
+                    'jam' => $request->input('current_time'),
+                    'longitude' => $request->input('longitude'),
+                    'latitude' => $request->input('latitude'),
+                    'keterangan' => $request->input('information'),
+                ]);
+
+        
+
 
         return redirect('/index')->with('message','Absen masuk telah berhasil ditambahkan!');
     }
@@ -170,6 +198,16 @@ class userDashboardController extends Controller
             'path' =>$request->input('pdf_resume'),
             'ukuran_file' =>$request->input('ukuran_file'),
         ]);
+
+        $tanggalAbsen = $request->input('current_date');
+
+        $sudahAbsenMasuk = absenMasuk::where('tanggal', $tanggalAbsen)->first();
+
+        if ($sudahAbsenMasuk) {
+            // Variabel $sudahAbsenMasuk tidak null, sehingga menunjukkan bahwa hasilnya adalah true
+            absenMasuk::where('tanggal', $tanggalAbsen) // Ganti 'id' dengan kolom yang sesuai dengan kondisi yang ingin Anda gunakan
+            ->update(['status' => 'Masuk']);
+        }
         
         absenPulang::create([
             'user_id'=> $user->id,
@@ -178,7 +216,7 @@ class userDashboardController extends Controller
             'nim' => $user->student_id,
             'sekolah' => $user->school,
             'status' => $request->input('attendance_type'),
-            'tanggal' => $request->input('current_date'),
+            'tanggal' => $tanggalAbsen,
             'jam' => $request->input('current_time'),
             'longitude' => $request->input('longitude'),
             'latitude' => $request->input('latitude'),
@@ -192,11 +230,7 @@ class userDashboardController extends Controller
 
         $user_studentID = $user->student_id;
 
-        
-
         $absenMasuk = absenMasuk::where('nim', $user_studentID)->get();
-
-
         $absenPulang = absenPulang::where('nim', $user_studentID)->get();
 
         return  view('user-view.riwayat-user',[

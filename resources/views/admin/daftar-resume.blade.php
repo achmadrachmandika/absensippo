@@ -83,7 +83,6 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                                <!-- Data absensi lainnya bisa ditambahkan di sini -->
                             </tbody>
                         </table>
                     </div>
