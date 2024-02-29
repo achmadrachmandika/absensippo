@@ -31,6 +31,10 @@
                                     <td>Jumlah Sakit:</td>
                                     <td>{{ $jumlah_sakit }} hari</td>
                                 </tr>
+                                <tr>
+                                    <td>Jumlah Alpha:</td>
+                                    <td>{{ $jumlah_alpha }} hari</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

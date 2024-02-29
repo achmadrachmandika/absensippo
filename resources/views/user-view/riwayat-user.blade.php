@@ -34,21 +34,30 @@
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
-                                    <th>Jam</th>                                    
+                                    <th>Jam Masuk</th>
+                                    <th>Jam Pulang</th>                                
                                     <th>Status</th>
-                                    <th>Koordinat</th>
                                     <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($masuks as $masuk)
-                                <tr>
-                                    <td>{{$masuk->tanggal}}</td>
-                                    <td>{{$masuk->jam}}</td>
-                                    <td>{{$masuk->status}}</td>
-                                    <td>{{$masuk->longitude}}, {{$masuk->latitude}}</td>
-                                    <td>{{$masuk->keterangan}}</td>
-                                </tr>
+                                @foreach($masuks as $index => $masuk)
+                                    <tr>
+                                        <td>{{$masuk->tanggal}}</td>
+                                        <td>{{$masuk->jam}}</td>
+                                        @php
+                                            $pulang = $pulangs->where('tanggal', $masuk->tanggal)->first();
+                                        @endphp
+                                        <td>
+                                            @if($pulang)
+                                                {{$pulang->jam}}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
+                                        <td>{{$masuk->status}}</td>
+                                        <td>{{$masuk->keterangan}}</td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -58,40 +67,6 @@
             </div>
         </div>
         <br>
-                  <div class="row">
-                    <div class="col">
-                        <div class="card card-riwayat" >
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h3 class="font-weight-bold">Riwayat Absensi Pulang</h3>
-                                </div>
-                            </div>
-                            <div class="card-body table-card-body">
-                                <table id="tabel-data-pulang" class="table table-striped table-bordered" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Tanggal</th>
-                                            <th>Jam</th>
-                                            <th>Status</th>
-                                            <th>Koordinat</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($pulangs as $pulang)
-                                        <tr>
-                                            <td>{{$pulang->tanggal}}</td>
-                                            <td>{{$pulang->jam}}</td>
-                                            <td>{{$pulang->status}}</td>
-                                            <td>{{$pulang->longitude}}, {{$pulang->latitude}}</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                
-                            </div>
-                        </div>
-                            </div>
-                          </div>
                           <br>
                           <div class="row">
                             <div class="col">

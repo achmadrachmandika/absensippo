@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AbsenMasuk;
+use App\Models\AbsenPulang;
+use App\Models\User;
 
 
 
@@ -12,9 +14,14 @@ class AbsenMasukController extends Controller
 {
     public function index()
     {   
+        
+
         $absenMasuk = AbsenMasuk::orderBy('created_at', 'desc')->get(); // Mengurutkan berdasarkan waktu paling akhir
-        return view('admin.absenmasuk', [
-            'masuks' => $absenMasuk
+        $absenPulang = AbsenPulang::orderBy('created_at', 'desc')->get(); // Mengurutkan berdasarkan waktu paling akhir
+
+        return  view('admin.absenmasuk',[
+            'masuks' => $absenMasuk,
+            'pulangs' => $absenPulang
         ]);
     }
 
@@ -33,6 +40,7 @@ class AbsenMasukController extends Controller
         $jumlah_masuk = 0;
         $jumlah_izin = 0;
         $jumlah_sakit = 0;
+        $jumlah_alpha = 0;
 
         // Loop melalui setiap entri absensi untuk menghitung jumlah kehadiran, izin, dan sakit
         foreach ($absenMasuk as $absen) {
@@ -42,10 +50,12 @@ class AbsenMasukController extends Controller
                 $jumlah_izin++;
             } elseif ($absen->status === 'Sakit') {
                 $jumlah_sakit++;
+            }elseif ($absen->status === 'Alpha') {
+                $jumlah_alpha++;
             }
         }
 
-        return view('admin.detail', compact('absenMasuk', 'user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+        return view('admin.detail', compact('absenMasuk', 'user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit', 'jumlah_alpha'));
     }
 
     public function cetak($id)

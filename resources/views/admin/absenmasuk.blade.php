@@ -54,7 +54,14 @@
                         <p>{{ $message }}</p>
                     </div>
                     @endif
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
+                    <div class="row">
+                      <div class="col">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
+                      </div>
+                      <div class="col">
+                        <div class="btn btn-secondary form-control" onclick="window.location.href = '/admin/rekapHarian'">Cek Yang Belom Absen</div>
+                      </div>
+                    </div>
                     <div class="table-responsive">
 
                       <!-- Tambahkan tombol import di atas tabel -->
@@ -67,31 +74,54 @@
                       </div>
 
                       <div style="max-height:700px">
-                        <table id="myTable" class="table table-striped">
-                            <thead class="bg-secondary text-white">
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Sekolah / Universitas</th>
-                                    <th>Status</th>
-                                    <th>Waktu</th>
-                                    <th>Keterangan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($masuks as $masuk)
-                                <tr>
-                                    <td>{{$masuk->nama}}</td>
-                                    <td>{{$masuk->sekolah}}</td>
-                                    <td>{{$masuk->status}}</td>
-                                    <td>{{$masuk->tanggal}} {{$masuk->jam}}</td>
-                                    <td>{{$masuk->keterangan}}</td>
-                                    <td><a href="{{url('admin/cekMapMasuk/'.$masuk->id)}}" class="btn btn-secondary">Cek Maps</a></td>
-                                </tr>
-                                @endforeach
-                                <!-- Data absensi lainnya bisa ditambahkan di sini -->
-                            </tbody>
-                        </table>
+                        <table id="tabel-data-masuk" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                          <thead>
+                              <tr>
+                                  <th>Nama</th>
+                                  <th>NIM / NISN</th>
+                                  <th>Asal Sekolah / Universitas</th>
+                                  <th>Tanggal</th>
+                                  <th>Jam Masuk</th>
+                                  <th>Jam Pulang</th>                                
+                                  <th>Status</th>
+                                  <th>Keterangan</th>
+                                  <th>Aksi</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              @foreach($masuks as $index => $masuk)
+                                  <tr>
+                                      <td>{{$masuk->nama}}</td>
+                                      <td>{{$masuk->nim}}</td>
+                                      <td>{{$masuk->sekolah}}</td>
+                                      <td>{{$masuk->tanggal}}</td>
+                                      <td>{{$masuk->jam}}</td>
+                                      @php
+                                          $pulang = $pulangs->where('nim', $masuk->nim)->where('tanggal', $masuk->tanggal)->first();
+                                      @endphp
+                                      <td>
+                                          @if($pulang)
+                                              {{$pulang->jam}}
+                                          @else
+                                              -
+                                          @endif
+                                      </td>
+                                      
+                                      @if($masuk->status == 'Masuk')
+                                          <td><p style="font-weight:bold;color:green">{{$masuk->status}}</p></td>
+                                      @elseif($masuk->status == 'Izin' || $masuk->status == 'Sakit')
+                                          <td><p style="font-weight:bold;color:grey">{{$masuk->status}}</p></td>
+                                      @elseif($masuk->status == 'Alpha')
+                                          <td><p style="font-weight:bold;color:red">{{$masuk->status}}</p></td>
+                                      @elseif($masuk->status == 'Sedang Masuk')
+                                      <td><p style="font-weight:bold;color:rgb(90, 90, 226)">{{$masuk->status}}</p></td>
+                                      @endif
+                                      <td>{{$masuk->keterangan}}</td>
+                                      <td><a href="{{url('admin/cekMapMasuk/'.$masuk->id)}}" class="btn btn-secondary">Cek Maps</a></td>
+                                  </tr>
+                              @endforeach
+                          </tbody>
+                      </table>
                       </div>
 
                     </div>

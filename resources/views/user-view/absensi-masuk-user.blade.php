@@ -56,7 +56,7 @@
                                     <div class="col-3"></div>
                                     <div class="col-6">
                                         <div class="row" style="border:1px solid #0000">
-                                            <input onclick="setAttendanceTypeAndSubmit('Masuk')"
+                                            <input onclick="setAttendanceTypeAndSubmit('Sedang Masuk')"
                                                 class="btn btn-secondary form-control" type="button" value="Masuk">
                                         </div>
                                         <div class="row" style="border:1px solid #0000">

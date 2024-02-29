@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('sekolah');
             $table->string('status');
             $table->date('tanggal');
-            $table->time('jam');
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->time('jam')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('latitude')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();
         
