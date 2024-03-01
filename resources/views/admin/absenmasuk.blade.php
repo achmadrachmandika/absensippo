@@ -59,7 +59,7 @@
                         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
                       </div>
                       <div class="col">
-                        <div class="btn btn-secondary form-control" onclick="window.location.href = '/admin/rekapHarian'">Cek Yang Belom Absen</div>
+                        <div class="btn btn-secondary form-control" onclick="window.location.href = '/admin/rekapHarian'">Tutup Absen Masuk Hari Ini</div>
                       </div>
                     </div>
                     <div class="table-responsive">
