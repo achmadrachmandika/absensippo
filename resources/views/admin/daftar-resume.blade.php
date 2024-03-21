@@ -56,7 +56,7 @@
                     @endif
                     <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Cari Nama.." title="Type in a name">
                     <div class="table-responsive" style="max-height:700px">
-                        <table id="myTable" class="table table-striped">
+                        <table id="tabel-data-masuk" class="table table-striped">
                             <thead class="bg-secondary text-white">
                                 <tr>
                                     <th>Nama</th>
@@ -96,7 +96,7 @@
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
+      table = document.getElementById("tabel-data-masuk");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];

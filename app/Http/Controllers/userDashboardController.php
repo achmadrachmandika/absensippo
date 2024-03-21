@@ -186,9 +186,11 @@ class userDashboardController extends Controller
     }
 
     public function kirimAbsensiPulang(Request $request) {
+    $user = Auth::user();
 
-        $user = Auth::user();
-
+    // Memeriksa apakah pengguna memiliki peran selain admin
+    if ($user->role !== 'admin') {
+        // Membuat resume baru
         resume::create([
             'user_id'=> $user->id,
             'nama' => $user->name,
@@ -201,28 +203,45 @@ class userDashboardController extends Controller
 
         $tanggalAbsen = $request->input('current_date');
 
-        $sudahAbsenMasuk = absenMasuk::where('tanggal', $tanggalAbsen)->first();
+        // Memeriksa apakah pengguna sudah absen pulang pada tanggal yang sama sebelumnya
+        $sudahAbsenPulang = absenPulang::where('user_id', $user->id)
+                                        ->where('tanggal', $tanggalAbsen)
+                                        ->exists();
 
-        if ($sudahAbsenMasuk) {
-            // Variabel $sudahAbsenMasuk tidak null, sehingga menunjukkan bahwa hasilnya adalah true
-            absenMasuk::where('tanggal', $tanggalAbsen) // Ganti 'id' dengan kolom yang sesuai dengan kondisi yang ingin Anda gunakan
-            ->update(['status' => 'Masuk']);
+        if (!$sudahAbsenPulang) {
+            // Buat absensi pulang baru untuk pengguna
+            absenPulang::create([
+                'user_id'=> $user->id,
+                'nama' => $user->name,
+                'email' => $user->email,
+                'nim' => $user->student_id,
+                'sekolah' => $user->school,
+                'status' => $request->input('attendance_type'),
+                'tanggal' => $tanggalAbsen,
+                'jam' => $request->input('current_time'),
+                'longitude' => $request->input('longitude'),
+                'latitude' => $request->input('latitude'),
+            ]);
+
+            // Perbarui status absen masuk menjadi "Masuk" jika belum absen pulang pada tanggal yang sama sebelumnya
+            $sudahAbsenMasuk = absenMasuk::where('user_id', $user->id)
+                                          ->where('tanggal', $tanggalAbsen)
+                                          ->first();
+            if ($sudahAbsenMasuk && $sudahAbsenMasuk->status !== 'Izin' && $sudahAbsenMasuk->status !== 'Sakit') {
+                $sudahAbsenMasuk->update(['status' => 'Masuk']);
+            }
+
+            return redirect('/index')->with('message','Absen pulang telah berhasil ditambahkan!');
+        } else {
+            // Jika pengguna sudah absen pulang pada tanggal yang sama sebelumnya
+            return redirect('/index')->with('message','Anda sudah absen pulang hari ini.');
         }
-        
-        absenPulang::create([
-            'user_id'=> $user->id,
-            'nama' => $user->name,
-            'email' => $user->email,
-            'nim' => $user->student_id,
-            'sekolah' => $user->school,
-            'status' => $request->input('attendance_type'),
-            'tanggal' => $tanggalAbsen,
-            'jam' => $request->input('current_time'),
-            'longitude' => $request->input('longitude'),
-            'latitude' => $request->input('latitude'),
-        ]);
-        return redirect('/index')->with('message','Absen pulang telah berhasil ditambahkan!');
+    } else {
+        // Jika pengguna adalah admin, tidak perlu melakukan apa pun
+        return redirect('/index')->with('message','Anda adalah admin, tidak dapat melakukan absen pulang.');
     }
+}
+
 
     public function riwayat() {
 

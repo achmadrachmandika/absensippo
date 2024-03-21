@@ -135,7 +135,7 @@
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
+      table = document.getElementById("tabel-data-masuk");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0]; // Mengambil elemen kedua (kolom kedua) untuk pencarian berdasarkan nama

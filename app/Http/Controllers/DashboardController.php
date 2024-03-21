@@ -34,7 +34,7 @@ class DashboardController extends Controller
     public function rekapHarian()
     {
          // Ambil semua data pengguna dari model User, diurutkan berdasarkan pembuatan terbaru
-        $users = User::all();
+          $users = User::where('role', '!=', 'admin')->get();
         $todayDate = Carbon::now()->toDateString();
 
         foreach ($users as $user) {
@@ -57,7 +57,9 @@ class DashboardController extends Controller
             'latitude' => null,
             'keterangan' => null,
         ]);
-    }
+     } elseif ($absenMasuk->status === "Alpha") {
+            continue; // Lanjutkan ke iterasi berikutnya jika status sudah "Alpha"
+        }
     
         // return view('admin.daftar-resume', compact('resumes'));
         }
