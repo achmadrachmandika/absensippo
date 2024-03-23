@@ -55,6 +55,7 @@
                     <th>Jumlah Kehadiran</th>
                     <th>Jumlah Izin</th>
                     <th>Jumlah Sakit</th>
+                    <th>Jumlah Alpha</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,6 +64,7 @@
                     <td>{{ $jumlah_masuk }} hari</td>
                     <td>{{ $jumlah_izin }} hari</td>
                     <td>{{ $jumlah_sakit }} hari</td>
+                    <td>{{ $jumlah_alpha }} hari</td>
                 </tr>
             </tbody>
         </table>

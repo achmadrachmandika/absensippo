@@ -70,9 +70,10 @@ class AbsenMasukController extends Controller
         $jumlah_masuk = 0;
         $jumlah_izin = 0;
         $jumlah_sakit = 0;
+        $jumlah_alpha = 0;
 
         // Membuat PDF dari tampilan Blade
-        $pdf = PDF::loadView('admin.cetak', compact('user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+        $pdf = PDF::loadView('admin.cetak', compact('user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit', 'jumlah_alpha'));
 
         // Mengatur nama file PDF yang akan dihasilkan
         $filename = 'absensi_' . $user->name . '.pdf';
@@ -93,9 +94,10 @@ class AbsenMasukController extends Controller
     $jumlah_masuk = 0;
     $jumlah_izin = 0;
     $jumlah_sakit = 0;
+    $jumlah_alpha = 0;
 
     // Membuat PDF dari tampilan Blade
-    $pdf = PDF::loadView('admin.cetak', compact('user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+    $pdf = PDF::loadView('admin.cetak', compact('user', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit', 'jumlah_alpha'));
 
     // Mengatur nama file PDF yang akan dihasilkan
     $filename = 'absensi_' . $user->name . '.pdf';

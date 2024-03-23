@@ -62,18 +62,26 @@ class userDashboardController extends Controller
 
         // Mengembalikan nilai true jika ada record absen Pulang untuk pengguna saat ini pada tanggal sekarang
         $absenPulangExists = $dataPulang->isNotEmpty();
-        if ($absenPulangExists) {
-            return redirect('/index')->with('message', 'Anda Sudah Pulang Hari Ini');
-        } else if ($statusMasuk->status == 'Izin' || $statusMasuk->status == 'Sakit') {
-            return redirect('/index')->with('message', 'Anda Tidak Masuk Hari Ini');   
-        } else if ($statusMasuk->status == 'Alpha') {
-            return redirect('/index')->with('message', 'Anda Tidak Absen Masuk Tadi Pagi');   
-        }
-        else if ($statusMasuk->status == 'Sedang Masuk'){
-            return view('user-view.absensi-pulang-user',[
-                'user' => $user
-            ]);   
-        }
+
+if ($absenPulangExists) {
+    return redirect('/index')->with('message', 'Anda Sudah Pulang Hari Ini');
+} else if (!$statusMasuk) {
+    // Jika status masuk adalah null, maka tidak bisa absen pulang
+    return redirect('/index')->with('message', 'Anda belum melakukan absen masuk hari ini');
+} else if ($statusMasuk->status == 'Izin' || $statusMasuk->status == 'Sakit') {
+    return redirect('/index')->with('message', 'Anda Tidak Masuk Hari Ini');   
+} else if ($statusMasuk->status == 'Alpha') {
+    return redirect('/index')->with('message', 'Anda Tidak Absen Masuk Tadi Pagi');   
+} else if ($statusMasuk->status == 'Sedang Masuk') {
+    return view('user-view.absensi-pulang-user', [
+        'user' => $user
+    ]);   
+} else {
+    // Jika tidak ada status izin, sakit, atau alpha, maka belum absen masuk
+    return redirect('/index')->with('message', 'Anda Belum Absen Masuk Hari Ini');
+}
+
+
 
         
     }

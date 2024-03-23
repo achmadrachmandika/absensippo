@@ -26,9 +26,10 @@ class CetakController extends Controller
         $jumlah_masuk = $absenMasuk->where('status', 'Masuk')->count();
         $jumlah_izin = $absenMasuk->where('status', 'Izin')->count();
         $jumlah_sakit = $absenMasuk->where('status', 'Sakit')->count();
+        $jumlah_alpha = $absenMasuk->where('status', 'Alpha')->count();
 
         // Membuat PDF dari tampilan Blade
-        $pdf = PDF::loadView('admin.cetak', compact('user', 'absenMasuk', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+        $pdf = PDF::loadView('admin.cetak', compact('user', 'absenMasuk', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit', 'jumlah_alpha'));
 
         // Mengatur nama file PDF yang akan dihasilkan
         $filename = 'absensi_' . $user->name . '.pdf';
@@ -49,9 +50,10 @@ class CetakController extends Controller
         $jumlah_masuk = $absenMasuk->where('status', 'Masuk')->count();
         $jumlah_izin = $absenMasuk->where('status', 'Izin')->count();
         $jumlah_sakit = $absenMasuk->where('status', 'Sakit')->count();
+        $jumlah_alpha = $absenMasuk->where('status', 'Alpha')->count();
 
         // Mengembalikan view preview dengan data yang diperlukan
-        return view('admin.preview', compact('user', 'absenMasuk', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit'));
+        return view('admin.preview', compact('user', 'absenMasuk', 'jumlah_masuk', 'jumlah_izin', 'jumlah_sakit', 'jumlah_alpha'));
     }
 
 }
